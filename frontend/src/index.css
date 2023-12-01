@@ -121,6 +121,13 @@ code {
 @media(max-width:800px) {
     #product-container {
         width: 90%;
+<<<<<<< HEAD
+=======
+    }
+
+    #AllProduct-item {
+
+>>>>>>> main
         grid-template-columns: repeat(3, 1fr);
         gap: 10px;
     }
@@ -154,7 +161,11 @@ code {
 }
 
 @media(max-width:600px) {
+<<<<<<< HEAD
     #product-container {
+=======
+    #AllProduct-item {
+>>>>>>> main
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
     }
@@ -177,13 +188,19 @@ code {
     }
 
     .product-item .btn {
+<<<<<<< HEAD
         display: block;
         margin: auto;
+=======
+>>>>>>> main
         font-size: 10px;
     }
 
     .product-item .price {
+<<<<<<< HEAD
         text-align: center;
+=======
+>>>>>>> main
         font-size: 10px;
     }
 
