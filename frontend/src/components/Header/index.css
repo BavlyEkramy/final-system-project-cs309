@@ -1,0 +1,100 @@
+/* Start header */
+
+header {
+	width: 100%;
+	background-color: #000;
+	position: fixed;
+	z-index: 10;
+	text-transform: uppercase;
+	border-bottom: 3px solid #f7f7f7;
+}
+
+header .flex-box {
+	justify-content: space-between;
+}
+
+header nav {
+	padding: 10px 15px;
+	position: relative;
+  flex: 2;
+}
+
+header .logo {
+  flex: 1;
+	cursor: pointer;
+}
+
+header nav ul {
+	width: 70%;
+	list-style: none;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+header nav ul li {
+	text-align: center;
+	cursor: pointer;
+	padding: 10px 15px;
+	min-width: 150px;
+}
+
+header nav ul li a {
+	text-decoration: none;
+}
+
+header nav ul li:hover a {
+	color: var(--main-color);
+	transition: .5s;
+}
+
+header nav ul li a {
+	color: #fff;
+}
+
+header nav ul li.products-li {
+  position: relative;
+}
+
+header nav ul li.products-li .myList {
+  position: absolute;
+  bottom: -325%;
+  left: 0;
+  z-index: 999;
+  width: fit-content;
+}
+
+header .sign{
+  justify-content: end;
+  width: fit-content;
+  flex: 1;
+}
+
+header .sign input {
+  margin-right: 10px;
+  border: 1px solid #fff;
+  border-radius: 6px;
+  font-weight: bold;
+  background-color: transparent;
+  color: #fff;
+  padding: 15px;
+  cursor: pointer;
+
+}
+
+header .sign input:hover {
+  background-color: rgba(255, 255, 255, .3);
+}
+
+header .sign .username {
+  margin-right: 10px;
+  border: 1px solid #fff;
+  border-radius: 6px;
+  font-weight: bold;
+  background-color: transparent;
+  color: #fff;
+  padding: 15px;
+  cursor: pointer;
+}
+
+/* End header */

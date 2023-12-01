@@ -1,9 +1,54 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* Start global rules */
+
+:root {
+	--main-color: rgb(21 57 204);
 }
 
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+/* End global rules */
+
+/* Start special classes */
+
+.container {
+	width: 1170px;
+	margin: 0 auto;
+}
+
+.flex-box {
+	display: flex;
+	flex-flow: row;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.h2 {
+	display: block;
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+.h3 {
+	display: block;
+	font-size: 1.17em;
+	font-weight: bold;
+}
+
+.h4 {
+	display: block;
+	font-size: 1.33em;
+	font-weight: bold;
+}
+
+/* End special classes */
 body {
     letter-spacing: 0.3px;
     /* font-family: Arial, Heivetica, sans-serif; */
@@ -121,13 +166,11 @@ code {
 @media(max-width:800px) {
     #product-container {
         width: 90%;
-<<<<<<< HEAD
-=======
     }
 
     #AllProduct-item {
 
->>>>>>> main
+
         grid-template-columns: repeat(3, 1fr);
         gap: 10px;
     }
@@ -161,11 +204,8 @@ code {
 }
 
 @media(max-width:600px) {
-<<<<<<< HEAD
     #product-container {
-=======
     #AllProduct-item {
->>>>>>> main
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
     }
@@ -188,19 +228,13 @@ code {
     }
 
     .product-item .btn {
-<<<<<<< HEAD
         display: block;
         margin: auto;
-=======
->>>>>>> main
         font-size: 10px;
     }
 
     .product-item .price {
-<<<<<<< HEAD
         text-align: center;
-=======
->>>>>>> main
         font-size: 10px;
     }
 

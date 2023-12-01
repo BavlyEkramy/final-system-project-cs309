@@ -1,7 +1,13 @@
+import Header from "./components/Header/Header";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import * as ROUTES from './constants/routes';
+import Header from "./components/Header/Header";
 import Product from "./components/Product";
 import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import * as ROUTES from './constants/routes';
 
-function App() {
+const App = ()=> {
   // const [cs309, setCs309] = useState("");
   // const [productsFilter, setProductsFilter] = useState("");
   const products = [
@@ -26,12 +32,21 @@ function App() {
   })
   return (
     <>
+      /*
+        <Router>
+        <Routes>
+          <Route path={ROUTES.LANDING} element={<Home />}>
+            <Route path={ROUTES.HOME} element={<Home />} />
+          </Route>
+          
+        </Routes>
+      </Router>
+      */
       {products.map((p) => (
         <Product />
       ))}
     </>
   );
-
 }
 
 export default App;
