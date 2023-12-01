@@ -1,0 +1,54 @@
+/* Start global rules */
+
+:root {
+	--main-color: rgb(21 57 204);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font: bold 20px sans-serif;
+}
+/* End global rules */
+
+/* Start special classes */
+
+.container {
+	width: 1170px;
+	margin: 0 auto;
+}
+
+.flex-box {
+	display: flex;
+	flex-flow: row;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.h2 {
+	display: block;
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+.h3 {
+	display: block;
+	font-size: 1.17em;
+	font-weight: bold;
+}
+
+.h4 {
+	display: block;
+	font-size: 1.33em;
+	font-weight: bold;
+}
+
+/* End special classes */
