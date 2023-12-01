@@ -204,7 +204,6 @@ code {
 }
 
 @media(max-width:600px) {
-    #product-container {
     #AllProduct-item {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
@@ -237,5 +236,4 @@ code {
         text-align: center;
         font-size: 10px;
     }
-
 }
