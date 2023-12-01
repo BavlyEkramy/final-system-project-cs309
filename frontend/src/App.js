@@ -1,11 +1,9 @@
 import Header from "./components/Header/Header";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import * as ROUTES from './constants/routes';
-import Header from "./components/Header/Header";
 import Product from "./components/Product";
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import * as ROUTES from './constants/routes';
+import Home from './components/Home/Home';
 
 const App = ()=> {
   // const [cs309, setCs309] = useState("");
@@ -30,23 +28,30 @@ const App = ()=> {
       }
     })
   })
+
   return (
-    <>
-      /*
-        <Router>
-        <Routes>
-          <Route path={ROUTES.LANDING} element={<Home />}>
-            <Route path={ROUTES.HOME} element={<Home />} />
-          </Route>
+    // <>
+    //   <Header />
+      
+    //     <Router>
+    //     <Routes>
+    //       <Route path={ROUTES.LANDING} element={<Home />}>
+    //         <Route path={ROUTES.HOME} element={<Home />} />
+    //       </Route>
           
-        </Routes>
-      </Router>
-      */
-      {products.map((p) => (
+    //     </Routes>
+    //   </Router>
+    // </>
+
+    <>
+    <Header />
+    products.map((p) => (
         <Product />
-      ))}
+      ))
     </>
   );
+
+  
 }
 
 export default App;

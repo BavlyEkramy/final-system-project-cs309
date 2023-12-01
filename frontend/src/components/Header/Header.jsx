@@ -6,10 +6,6 @@ import {Link} from "react-router-dom";
 
 const productsKinds = ["Laptops", "Screens", "Phones"];
 
-const disableLink = e => {
-	e.preventDefault();
-}
-
 const Header = props => {
 	const [popup, setPopup] = useState(false);
 	const [login, setLogin] = useState(false);
@@ -21,7 +17,7 @@ const Header = props => {
 			</div>
 			<nav className="flex-box">
 				<ul>
-					<li><Link to="/home">Home</Link></li>
+					<li><a href="/home">Home</a></li>
 					<li className="products-li"
 						onMouseEnter={() => {
 							setPopup(true);
@@ -31,7 +27,7 @@ const Header = props => {
 						}}
 						
 					>
-						<Link to="/products">products</Link>
+						<a href="/products">products</a>
 						{popup && <List items={productsKinds}
 						onMouseEnter={() => {
 							setPopup(true);
