@@ -45,9 +45,9 @@ const App = ()=> {
 
     <>
     <Header />
-    products.map((p) => (
+    {products.map((p) => {
         <Product />
-      ))
+    })}
     </>
   );
 
