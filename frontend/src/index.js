@@ -4,7 +4,10 @@ import './index.css';
 import App from './App';
 
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> main
 const root = ReactDOM.createRoot(document.getElementById('AllProduct-item'));
 root.render(
   <React.StrictMode>
