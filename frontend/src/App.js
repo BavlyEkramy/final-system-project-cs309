@@ -1,7 +1,11 @@
+import Header from "./components/Header/Header";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import * as ROUTES from './constants/routes';
 import Product from "./components/Product";
 import { useState, useEffect } from "react";
+import Home from './components/Home/Home';
 
-function App() {
+const App = ()=> {
   // const [cs309, setCs309] = useState("");
   // const [productsFilter, setProductsFilter] = useState("");
   const products = [
@@ -24,14 +28,30 @@ function App() {
       }
     })
   })
+
   return (
+    // <>
+    //   <Header />
+      
+    //     <Router>
+    //     <Routes>
+    //       <Route path={ROUTES.LANDING} element={<Home />}>
+    //         <Route path={ROUTES.HOME} element={<Home />} />
+    //       </Route>
+          
+    //     </Routes>
+    //   </Router>
+    // </>
+
     <>
-      {products.map((p) => (
+    <Header />
+    {products.map((p) => {
         <Product />
-      ))}
+    })}
     </>
   );
 
+  
 }
 
 export default App;
