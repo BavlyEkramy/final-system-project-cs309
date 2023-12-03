@@ -3,12 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 
-
-<<<<<<< HEAD
-=======
-
->>>>>>> main
-const root = ReactDOM.createRoot(document.getElementById('AllProduct-item'));
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <App />
