@@ -13,7 +13,7 @@ const Header = props => {
     <header>
 		<div className="container flex-box">
 			<div className="logo">
-				<img src="../../../public/images/logo.jpg" alt="logo" />
+				<img src="/images/logo.jpg" alt="logo" />
 			</div>
 			<nav className="flex-box">
 				<ul>
