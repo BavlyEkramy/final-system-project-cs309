@@ -3,49 +3,31 @@ import List from '../List/List';
 import { useState } from 'react';
 
 import {Link} from "react-router-dom";
-
-const productsKinds = ["Laptops", "Screens", "Phones"];
+import Search from '../Search/Search';
 
 const Header = props => {
-	const [popup, setPopup] = useState(false);
-	const [login, setLogin] = useState(false);
+	const [login, setLogin] = useState(true);
+	const [showMenu, setShowMenu] = useState(false);
 	return (
+		<>
     <header>
 		<div className="container flex-box">
 			<div className="logo">
-				<img src="/images/logo.jpg" alt="logo" />
+				<img src="images/logo.jpg" alt="logo" />
 			</div>
 			<nav className="flex-box">
 				<ul>
-					<li><a href="/home">Home</a></li>
-					<li className="products-li"
-						onMouseEnter={() => {
-							setPopup(true);
-						}}
-						onMouseLeave={() => {
-							setPopup(false);
-						}}
-						
-					>
-						<a href="/products">products</a>
-						{popup && <List items={productsKinds}
-						onMouseEnter={() => {
-							setPopup(true);
-						}}
-						 onMouseLeave={() => {
-							setPopup(false);
-						}}/>}
-					</li>
+					<li><Link to="/home">Home</Link></li>
+					<li><Link to="/cart">Cart</Link></li>
+					<li><Link to="/vendor">Vendor</Link></li>
         </ul>
 			</nav>
+			<Search />
 			<div className='sign flex-box'>
 				{!login ?
-					<>
-					<input type='button' value='Sign in' />
-					<input type='button' value='Sign up' onClick={()=> {
-						setLogin(true);
-					}}/>
-					</>
+					
+					<Link to='/signin'>Sign in</Link>
+					
 					:
 					<>
 					<div className='username'>Name</div>
@@ -55,8 +37,13 @@ const Header = props => {
 					</>
 				}
 			</div>
+			<div className="menu-icon">
+				<img src='images/burger-icon.jpg' onClick={()=> {setShowMenu(true)}} />
+			</div>
 		</div>
 	</header>
+	{showMenu && <List login={login} setLogin={setLogin} show={setShowMenu}/>}
+	</>
   );
 };
 
