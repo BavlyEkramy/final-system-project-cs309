@@ -7,3 +7,6 @@ export const ACCOUNT = '/account';
 export const ADMIN = '/admin';
 export const ADMIN_DETAILS = '/admin/:id';
 export const PASSWORD_FORGET = '/pw-forget';
+export const CART = '/cart';
+export const USERS = '/users';
+export const VENDOR = '/vendor';
