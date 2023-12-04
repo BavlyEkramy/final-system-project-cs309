@@ -14,9 +14,6 @@ html {
 	scroll-behavior: smooth;
 }
 
-body {
-	font: bold 20px sans-serif;
-}
 /* End global rules */
 
 /* Start special classes */
@@ -52,3 +49,18 @@ body {
 }
 
 /* End special classes */
+body {
+    letter-spacing: 0.3px;
+    /* font-family: Arial, Heivetica, sans-serif; */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+}
+
