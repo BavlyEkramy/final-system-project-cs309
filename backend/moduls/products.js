@@ -3,13 +3,14 @@ const Schema = mongoose.Schema;
 
 const productsSchema = new Schema(
     {
-        type: { type: String, required: true },
-        description: { type: String, required: true },
-        model: { type: String, required: true },
-        price: { type: String, required: true },
-        stock: { type: Number, required: true },
-        images: { type: Array, required: true },
-        stars: { type: Number, required: true },
+        id: {type : Number },
+        type: { type: String },
+        description: { type: String },
+        model: { type: String },
+        price: { type: String },
+        stock: { type: Number },
+        images: { type: Array },
+        stars: { type: Number},
     },
     {
         timestamps: true
