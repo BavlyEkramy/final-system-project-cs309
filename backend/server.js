@@ -42,25 +42,52 @@ server.get('/search' , cors() , async (req , res)=>{
 
 // Card Requestes
 
-// 1 => return all products for card's user 
+// 1 => return all products in card's user 
 
 server.get('/cards' , cors() , async (req , res)=>{
-
+    try{
+        const cards = await Cards.find({});
+        if(cards == null){
+            res.status(400).json("Empity");
+        }else{
+            res.status(200).json(cards);
+        }
+    }catch(error){
+        res.status(400).json(error);
+        console.log(error);
+    }
 });
 
 // 2 => delete product from card 
 
 server.delete('/deletecard' , cors() , async (req , res)=>{
-
+    const cardid = req.body.id;
+    try {
+        const deletecard = await Cards.findByIdAndDelete(cardid);
+        if(deletecard){
+            res.status(200).json(deletecard);
+        }else{
+            res.status(404).json("Not Found");
+        }
+    } catch (error) {
+        res.status(400).json(error);
+        console.log(error);
+    }
 });
 
 // 3 => add product to card's user
 
 server.post('/addcard' , cors() , async (req , res)=>{
-
+    const card = req.body;
+    try {
+        const newcard = await new Cards(card);
+        await newcard.save();
+        res.status(200).json("Add To Card");  
+    } catch (error) {
+        res.status(400).json(error);
+        console.log(error);
+    }
 });
-
-
 
 //-------------------------------------------------------------------------
 
@@ -69,13 +96,31 @@ server.post('/addcard' , cors() , async (req , res)=>{
 // 1 => get all products which user buy
 
 server.get('/buy' , cors() , async (req , res)=>{
-
+    try{
+        const buys = await Buy.find({});
+        if(buys == null){
+            res.status(400).json("Empity");
+        }else{
+            res.status(200).json(buys);
+        }
+    }catch(error){
+        res.status(400).json(error);
+        console.log(error);
+    }
 })
 
 // 2 => post product to buy
 
 server.post('/buy' , cors() , async (req , res)=>{
-
+    const buy = req.body;
+    try {
+        const newbuy = await new Buy(buy);
+        await newbuy.save();
+        res.status(200).json("Add To Card");  
+    } catch (error) {
+        res.status(400).json(error);
+        console.log(error);
+    }
 });
 
 //-------------------------------------------------------------------------
@@ -84,21 +129,52 @@ server.post('/buy' , cors() , async (req , res)=>{
 
 // 1 => chick if user email existe
 
-server.get('/login' , cors() , async (req , res)=>{
-
+server.post('/login' , cors() , async (req , res)=>{
+    const body = req.body;
+    try {
+        const finduser = await Users.findOne({email : body.email});
+        if(finduser == null){
+            res.json("Email Dose Not Exist");
+        }else{
+            const checkPassword  = await bcrypt.compareSync(body.password , finduser.password)
+            if(checkPassword){
+                res.status(200).json(finduser);
+            }else{
+                res.json("Email or Password is not correct");
+            }      
+    }
+    } catch (error) {
+        res.status(400).json(error);
+        console.log(error);
+    }
 })
 
 // 2 => Sign in new user
 
-server.post('/signin' , cors() , async(req , res)=>{
-
+server.post('/signup' , cors() , async(req , res)=>{
+        const newuser = req.body;
+        try {
+        const finduser = await Users.findOne({email:newuser.email});
+        
+        if(finduser != null){
+            res.json("Email is Oready Exist");
+        }else{
+           const user = await new Users(newuser);
+           user.password = await bcrypt.hash(user.password , 10);
+           await user.save();
+           res.status(200).json(user);
+        } 
+        }catch (error) {
+            res.status(400).json(error);
+            console.log(error);
+        }
 })
 
 //--------------------------------------------------------------------------
 
 //listen on Mongodb 
 mongoose.set("strictQuery", false);
-mongoose.connect('mongodb://127.0.0.1:27123')
+mongoose.connect('mongodb://127.0.0.1:27017')
 .then(()=>{
     console.log('connected to MongoDB');
     // listen on specific port 
