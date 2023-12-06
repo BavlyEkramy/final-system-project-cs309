@@ -1,43 +1,6 @@
-.Signin,
-.Signup {
-    width: 40%;
-    margin: auto;
-    border : 2px rgb(21 57 204) solid;
-    border-radius: 10%;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-top: 200px;
-}
+.container{
+display: flex;
+margin-right: 35%;
+padding-left: 50%;
 
-.Signin form,
-.Signup form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    flex-wrap: wrap;
-}
-
-.Signin form input,
-.Signup form input {
-    width: 80%;
-    margin: 10%;
-    padding: 20px;
-    font-size: 15px;
-    font-weight: bold;
-}
-
-.Signin form button , 
-.Signup form button {
-    width: 30%;
-    height: 10%;
-    background-color: dodgerblue;
-    color: white;
-    border: none;
-    font-size: 15px;
-    border-radius: 0%;
-    
 }
