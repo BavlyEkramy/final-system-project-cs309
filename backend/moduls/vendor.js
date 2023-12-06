@@ -2,7 +2,7 @@ const mongoose =require("mongoose");
 const Schema =mongoose.Schema ;
 
 
-const userSchema = new Schema({
+const vendorSchema = new Schema({
 
     
     firstName :{ type: String},
@@ -11,11 +11,12 @@ const userSchema = new Schema({
     password:{ type: String, required:true},
     adress:{ type: String},
     phone:{ type: String},
-    Age:{ type: Date},
+    Age:{ type: Number},
     sex:{ type: String},
     national:{ type: String},
+    Access:{ type: String},
    
 });
 
 
-module.exports=mongoose.model('User',userSchema);
+module.exports=mongoose.model('vendor',vendorSchema);
