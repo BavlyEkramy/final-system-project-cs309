@@ -12,7 +12,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 function Copyright(props) {
   return (
@@ -32,19 +33,48 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
-  const handleSubmit = (event) => {
-    
+
+  const history = useNavigate();
+  const dataInfo  = {
+    email:null,
+    password:null,
   };
-  const handleChange = (event)=>{
+  const  handelSubmit = async(e) =>{
+    e.preventDefault();
+    
+        try {
+            await axios.post("http://localhost:8000/login" , dataInfo)
+            .then( res =>{
+                console.log(res.data);
+                if(res.data === "Email Dose Not Exist" || res.data === "Email or Password is not correct"){
+                    const p = document.createElement('p');
+                    p.textContent = res.data;
+                    const Signin = document.getElementsByClassName('Signin')[0];
+                    Signin.appendChild(p); 
+                }else{
+                    history('/home');
+                }
+            }).catch(error=>{
+                console.log(error);
+            })
+
+        } catch (error) {
+            console.log(error);
+        }
+  }
+  const handleChange = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+    
+    const dataChange = {
       email: data.get('email'),
       password: data.get('password'),
-    });
+    };
 
-    
-  }
+    dataInfo.email = dataChange.email;
+    dataInfo.password = dataChange.password;
+
+  };
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -64,7 +94,7 @@ export default function SignIn() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} onChange={handleChange} noValidate sx={{ mt: 1 }}>
+          <Box component="form" onChange={handleChange} onSubmit={handelSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
@@ -84,6 +114,7 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
+            
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
