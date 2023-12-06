@@ -380,6 +380,7 @@ server.post('/login' , cors() , async (req , res)=>{
 
 server.post('/signup' , cors() , async(req , res)=>{
         const newuser = req.body;
+       
         try {
         const finduser = await Users.findOne({email:newuser.email});
         
