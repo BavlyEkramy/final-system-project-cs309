@@ -48,7 +48,6 @@ export default function SignUp() {
       national:null
     }
 
-
  const handleSubmit= async(event)=>{
     
 
@@ -76,7 +75,6 @@ export default function SignUp() {
     
  }
 
-
   const handleChange = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -93,7 +91,6 @@ export default function SignUp() {
       national:data.get('National'),
       
     }
-
 
     dataInfo.firstName=d.firstName;
     dataInfo.lastName=d.lastName;
