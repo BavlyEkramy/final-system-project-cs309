@@ -1,8 +1,11 @@
 import './index.css';
 
+
 const Vendor = () => {
   return(
-    <div className='vendor'>Vendor</div>
+    <div className='vendor'>hi
+    
+</div>
   );
 }
 

@@ -8,6 +8,8 @@ import Cart from './components/Cart/Cart';
 import Vendor from './components/Vendor/Vendor';
 import Signin from "./components/Signin/Signin";
 import Signup from "./components/Signup/Signup";
+import Insertproducts from "./components/InsertProducts/Insertproducts";
+
 
 const App = () => {
   const products = [
@@ -28,10 +30,13 @@ const App = () => {
             <Route path={ROUTES.HOME} element={<><Header /><Home /></>} />
           </Route>
           
-          <Route path={ROUTES.CART} element={<><Header /><Cart /></>} />
-          <Route path={ROUTES.VENDOR} element={<><Header /><Vendor /></>} />
-          <Route path={ROUTES.SIGN_IN} element={<><Header /><Signin /></>} />
-          <Route path={ROUTES.SIGN_UP} element={<><Header /><Signup /></>} />
+          <Route path={ROUTES.CART} element={<><Cart /></>} />
+          <Route path={ROUTES.VENDOR} element={<><Vendor /></>} />
+          <Route path={ROUTES.SIGN_IN} element={<><Signin /></>} />
+          <Route path={ROUTES.SIGN_UP} element={<><Signup /></>} />
+          <Route path={ROUTES.PRODUCTS} element={<><Header /><Product /></>} />
+          Insertproducts
+          <Route path={ROUTES.Insertproducts} element={<>< Insertproducts /></>} />
         </Routes>
       </Router>
     </>
