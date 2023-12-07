@@ -10,6 +10,7 @@ const Users = require("./moduls/users");
 const Cards = require("./moduls/basket");
 const Buy = require("./moduls/buy");
 const Vendor =require("./moduls/vendor");
+const vendorProduct =require("./moduls/vendorProduct")
 // Create server object
 const server = express();
 server.use(express.json());
@@ -376,6 +377,60 @@ server.post('/addcard' , cors() , async (req , res)=>{
         const newcard = await new Cards(card);
         await newcard.save();
         res.status(200).json("Add To Card");  
+    } catch (error) {
+        res.status(400).json(error);
+        console.log(error);
+    }
+});
+
+
+
+
+server.get('/vendorProduct' , cors() , async (req , res)=>{
+    
+    try{
+        const prod = await vendorProduct.find({});
+        console.log(prod);
+
+        if(prod.length===0){
+            res.json("Empity");
+        }else{
+            res.status(200).json(prod);
+        }
+    }catch(error){
+        res.status(400).json(error);
+        console.log(error);
+    }
+});
+
+
+
+
+
+server.post('/addProduct' , cors() , async (req , res)=>{
+    const product = req.body;
+    try {
+        const newProduct = await new vendorProduct(product);
+        await newProduct.save();
+        res.status(200).json("Add To Product");  
+    } catch (error) {
+        res.status(400).json(error);
+        console.log(error);
+    }
+});
+
+
+
+server.delete('/deleteProduct' , cors() , async (req , res)=>{
+    const Prodid = req.body.id;
+  
+    try {
+        const deleteProd = await vendorProduct.findByIdAndDelete(Prodid);
+        if(deleteProd){
+            res.status(200).json(deleteProd);
+        }else{
+            res.json("Not Found");
+        }
     } catch (error) {
         res.status(400).json(error);
         console.log(error);
