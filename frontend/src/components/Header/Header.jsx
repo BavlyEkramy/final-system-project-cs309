@@ -1,6 +1,7 @@
 import './index.css';
 import List from '../List/List';
 import { useContext, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import {Link} from "react-router-dom";
 import Search from '../Search/Search';
@@ -13,8 +14,17 @@ import { Avatar } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import * as ROUTES from '../../constants/routes';
 
+
+
+
 const Header = props => {
 	const {isLogin, setLogin, userData, setUserData} = useContext(UserContext);
+      
+	
+	
+
+
+	
 	const [showMenu, setShowMenu] = useState(false);
 	return (
 		<>

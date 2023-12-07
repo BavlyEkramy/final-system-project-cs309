@@ -14,7 +14,7 @@ const vendorSchema = new Schema({
     Age:{ type: Number},
     sex:{ type: String},
     national:{ type: String},
-    Access:{ type: String},
+    Access:{ type: Number},
    
 });
 
