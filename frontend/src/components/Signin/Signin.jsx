@@ -35,7 +35,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
-  const {isLogin, setLogin} = React.useContext(UserContext);
+  const {isLogin, setLogin, userData, setUserData} = React.useContext(UserContext);
   
   const history = useNavigate();
   const dataInfo  = {
@@ -50,27 +50,26 @@ export default function SignIn() {
             await axios.post("http://localhost:8000/login" , dataInfo)
             .then( res =>{
                 console.log(res.data);
-             
+                setUserData(res.data);
+                setLogin(true);
+
                 if(res.data === "Email Dose Not Exist" || res.data === "Email or Password is not correct"){
                   
-                 
+                    setUserData(null);
+                    setLogin(false);
                     const p = document.createElement('p');
+                    p.style.color='red';
                     p.textContent = res.data;
-                    const Signin = document.getElementsByClassName('Signin')[0];
-                    Signin.appendChild(p); 
+                    const Signin = document.querySelector('.MuiBox-root');
+                    Signin.appendChild(p);
                 }else{
                     history('/home');
-                    setLogin(true);
-                    console.log(isLogin);
                 }
             }
             ).catch(error=>{
                 console.log(error);
                
             })
-
-            console.log(isLogin);
-
         } catch (error) {
             console.log(error);
             a=true;
