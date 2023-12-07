@@ -1,0 +1,15 @@
+.insertPhoto{
+
+    display: flex;
+    flex-direction: row;
+
+}
+
+
+
+.image{
+
+display: flex;
+flex-direction: row;
+
+}

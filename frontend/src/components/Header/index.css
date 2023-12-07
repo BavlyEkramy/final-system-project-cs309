@@ -40,7 +40,7 @@ header .logo img {
 
 header nav {
   padding: 10px 15px;
-  flex: 2;
+  flex: 4;
   margin: 0;
   
 }
@@ -73,13 +73,12 @@ header nav ul li a {
 }
 
 header .search {
-  flex: 1;
+  flex: 1.2;
 }
 
 header .sign {
   justify-content: space-evenly;
   align-items: center;
-  flex: 1;
 }
 
 header .sign a {
@@ -92,8 +91,9 @@ header .sign input, header .sign a, header .sign .username {
   font-weight: bold;
   background-color: transparent;
   color: #fff;
-  padding: 15px;
-  text-transform: lowercase;
+  padding: 10px;
+  text-transform: capitalize;
+  margin: 5px;
 }
 
 header .sign .username {
@@ -133,20 +133,15 @@ header .menu-icon img {
 	}
 
   header .logo {
-    flex: .5;
+    flex: 1;
   }
 }
 
 @media (max-width: 767px) {
   header .search {
-    display: block;
-    width: 10px;
-    margin-left: 30px;
+    display: none;
   }
-
-  header .sign input {
-    padding: 5px;
-  }
+  
 }
 
 @media (min-width: 768px) {
@@ -162,12 +157,13 @@ header .menu-icon img {
     display: none;
   }
 
-  header .sign input {
-    padding: 5px;
+  header .search {
+    width: 10px;
+    font-size: 15px;
   }
 
-  header .search {
-    width: 200px
+  header .flex-box {
+    flex-wrap: nowrap;
   }
 }
 
@@ -194,13 +190,9 @@ header .menu-icon img {
 		width: 970px;
 	}
 
-  header .sign input {
-    padding: 10px;
-  }
-
-  header .search {
+  /* header .search {
     width: 240px
-  }
+  } */
 }
 
 @media (min-width: 1200px) {

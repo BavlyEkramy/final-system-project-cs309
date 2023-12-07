@@ -39,6 +39,7 @@ export default function SignIn() {
     email:null,
     password:null,
   };
+  const a = false;
   const  handelSubmit = async(e) =>{
     e.preventDefault();
     
@@ -46,7 +47,10 @@ export default function SignIn() {
             await axios.post("http://localhost:8000/login" , dataInfo)
             .then( res =>{
                 console.log(res.data);
+             
                 if(res.data === "Email Dose Not Exist" || res.data === "Email or Password is not correct"){
+                  
+                 
                     const p = document.createElement('p');
                     p.textContent = res.data;
                     const Signin = document.getElementsByClassName('Signin')[0];
@@ -56,10 +60,14 @@ export default function SignIn() {
                 }
             }).catch(error=>{
                 console.log(error);
+               
             })
 
         } catch (error) {
             console.log(error);
+            a=true;
+            console.log(a);
+            
         }
   }
   const handleChange = (event) => {
@@ -94,8 +102,10 @@ export default function SignIn() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
+       
           <Box component="form" onChange={handleChange} onSubmit={handelSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
+              error={a}
               margin="normal"
               required
               fullWidth
