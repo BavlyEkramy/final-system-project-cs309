@@ -248,7 +248,45 @@ const products = [
 // Home Requestes
 
 // 1 => return all products
+
+server.delete('/d' , cors() , async (req , res)=>{
+    try {
+        await Products.deleteMany({});
+        
+    } catch (error) {
+        console.log(error)
+    }
+      
+})
+
+
+
 server.get('/' , cors() , async (req , res)=>{
+    
+    try {
+        for(let i =0; i<products.length;i++){
+
+          const find = await Products.findOne({model:products[i].model});
+        
+          if(!find){
+            const pro = await new Products(products[i]); 
+            await pro.save();
+           
+          }
+
+        }
+        
+
+        const proAll= await Products.find({});
+        res.status(200).json(proAll);
+        
+    } catch (error) {
+        res.status(400).send(error)
+        console.log(error)
+    }
+
+    
+    
     
 });
 

@@ -110,8 +110,8 @@ const App = () => {
           
           <Route path={ROUTES.CART} element={<> <img scr="./prouducts_photo/Laptops/Lenovo Legion 5 Pro/2.png"></img> <Header /><Cart /></>} />
           <Route path={ROUTES.VENDOR} element={<><Header /><Vendor /> <Product Allproduct={products} IsVendor="true"></Product> </>} />
-          <Route path={ROUTES.SIGN_IN} element={<><Header /><Signin /></>} />
-          <Route path={ROUTES.SIGN_UP} element={<><Header /><Signup /></>} />
+          <Route path={ROUTES.SIGN_IN} element={<><Signin /></>} />
+          <Route path={ROUTES.SIGN_UP} element={<><Signup /></>} />
           <Route path={ROUTES.PRODUCTS} element={<><Header /><Product /></>} />
           Insertproducts
           <Route path={ROUTES.Insertproducts} element={<>< Insertproducts /></>} />
