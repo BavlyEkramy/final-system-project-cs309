@@ -1,6 +1,7 @@
 import './index.css';
 import List from '../List/List';
 import { useContext, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import {Link} from "react-router-dom";
 import Search from '../Search/Search';
@@ -10,8 +11,17 @@ import Badge from '@mui/material/Badge';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import UserContext from '../../Services/UserContext';
 
+
+
+
 const Header = props => {
 	const {isLogin, setLogin, userData, setUserData} = useContext(UserContext);
+      
+	
+	
+
+
+	
 	const [showMenu, setShowMenu] = useState(false);
 	return (
 		<>
@@ -39,7 +49,11 @@ const Header = props => {
 					
 					:
 					<>
+<<<<<<< HEAD
+					<div className='username'>{userData}</div>
+=======
 					<div className='username'>{userData ? userData.email: "Name"}</div>
+>>>>>>> 6839a398462e7af6a86e50d87ee67987da88c195
 					<input type='button' value='log out' onClick={()=> {
 						setLogin(false);
 						setUserData(null);
