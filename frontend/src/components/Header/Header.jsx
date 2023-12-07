@@ -5,6 +5,9 @@ import { useState } from 'react';
 import {Link} from "react-router-dom";
 import Search from '../Search/Search';
 
+import Badge from '@mui/material/Badge';
+// import MailIcon from '@mui/icons-material/Mail';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 const Header = props => {
 	const [login, setLogin] = useState(true);
 	const [showMenu, setShowMenu] = useState(false);
@@ -18,7 +21,11 @@ const Header = props => {
 			<nav className="flex-box">
 				<ul>
 					<li><Link to="/home">Home</Link></li>
-					<li><Link to="/cart">Cart</Link></li>
+							<li><Link to="/cart">Cart </Link>
+								<Badge badgeContent={4} color="primary">
+									<ShoppingCartIcon />
+								</Badge>
+							</li>
 					<li><Link to="/vendor">Vendor</Link></li>
         </ul>
 			</nav>

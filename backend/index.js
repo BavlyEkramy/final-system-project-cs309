@@ -16,3 +16,4 @@ const PORT= 1000;
 
  app.use("/laptops",laptopsRouter);
 app.listen(PORT ,() => console.log(`the server is running on port ${PORT}`));
+cd 
