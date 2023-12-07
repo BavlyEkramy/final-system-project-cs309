@@ -5,7 +5,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -13,7 +12,10 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
-import {useNavigate} from 'react-router-dom';
+import {Routes, useNavigate} from 'react-router-dom';
+import UserContext from '../../Services/UserContext';
+import { Link } from 'react-router-dom';
+import * as ROUTES from '../../constants/routes';
 
 function Copyright(props) {
   return (
@@ -33,7 +35,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-
+    const {isLogin, setLogin, userData, setUserData} = React.useContext(UserContext);
     const history= useNavigate();
 
     const dataInfo={ 
@@ -47,7 +49,6 @@ export default function SignUp() {
       Sex:null,
       national:null
     }
-
 
  const handleSubmit= async(event)=>{
     
@@ -65,6 +66,8 @@ export default function SignUp() {
                     Signup.appendChild(p);
                 }else{
                     history('/home');
+                    setLogin(true);
+                    setUserData(res.data);
                 }
             }).catch(error => {
                 console.log(error);
@@ -74,7 +77,6 @@ export default function SignUp() {
         }
     
  }
-
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -92,7 +94,6 @@ export default function SignUp() {
       national:data.get('National'),
       
     }
-
 
     dataInfo.firstName=d.firstName;
     dataInfo.lastName=d.lastName;
@@ -255,7 +256,7 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link to={ROUTES.SIGN_IN}>
                   Already have an account? Sign in
                 </Link>
               </Grid>
