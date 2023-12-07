@@ -13,21 +13,19 @@ const List = props => {
       </div>
       <Search placeholder="Search for products"/>
       <ul className='myList' onClick={() => props.show(false)}>
+        {!isLogin?
+          <li><Link to='/signin'>Sign in</Link></li>
+          :
+          <li><div className='username'>{userData ? userData.email : "Name"}</div></li>
+        }
         <li><Link to="/home">Home</Link></li>
         <li><Link to="/cart">Cart</Link></li>
         <li><Link to="/vendor">Vendor</Link></li>
-        {isLogin?
-          <>
-          <li><Link to='/signin'>Sign in</Link></li>
-          </>
-          :
-          <>
-          <li><div className='username'>{userData.firstName}</div></li>
+        {isLogin &&
           <li><input className='log-out' type='button' value='log out' onClick={()=> {
             setLogin(false);
-          }}/></li>
-          </>
-        }
+            setUserData(null);
+          }}/></li>}
       </ul>
     </div>
   );
