@@ -2,18 +2,15 @@ import Header from "./components/Header/Header";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import * as ROUTES from './constants/routes';
 import Product from "./components/Product/Product";
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import Home from './components/Home/Home';
 import Cart from './components/Cart/Cart';
 import Vendor from './components/Vendor/Vendor';
 import Signin from "./components/Signin/Signin";
 import Signup from "./components/Signup/Signup";
-// <<<<<<< HEAD
-// =======
+
 import Insertproducts from "./components/InsertProducts/Insertproducts";
 
-
-// >>>>>>> eaf7d946674016e0cd2d82b9d94660f9e667b8f0
 const App = () => {
   const products = [{
     type: "laptop",
@@ -108,7 +105,7 @@ const App = () => {
             <Route path={ROUTES.HOME} element={<><Header /><Home /></>} />
           </Route>
           
-          <Route path={ROUTES.CART} element={<> <img scr="./prouducts_photo/Laptops/Lenovo Legion 5 Pro/2.png"></img> <Header /><Cart /></>} />
+          <Route path={ROUTES.CART} element={<> <Header /><Cart /></>} />
           <Route path={ROUTES.VENDOR} element={<><Header /><Vendor /> <Product Allproduct={products} IsVendor="true"></Product> </>} />
           <Route path={ROUTES.SIGN_IN} element={<><Header /><Signin /></>} />
           <Route path={ROUTES.SIGN_UP} element={<><Header /><Signup /></>} />

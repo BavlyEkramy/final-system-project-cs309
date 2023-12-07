@@ -72,7 +72,6 @@ export default function SignUp() {
         } catch (error) {
           console.log(error);  
         }
-
     
  }
 
