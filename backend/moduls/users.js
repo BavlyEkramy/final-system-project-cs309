@@ -11,7 +11,7 @@ const userSchema = new Schema({
     password:{ type: String, required:true},
     adress:{ type: String},
     phone:{ type: String},
-    Age:{ type: Number},
+    Age:{ type: Date},
     sex:{ type: String},
     national:{ type: String},
    
