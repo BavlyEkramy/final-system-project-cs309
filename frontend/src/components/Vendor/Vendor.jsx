@@ -1,6 +1,7 @@
 import './index.css';
 // import Product from "../Product/Product";
 
+
 const Vendor = () => {
   const products = [
     { name: "laptop1", id: "15" },
@@ -16,6 +17,7 @@ const Vendor = () => {
         {/* <Product Allproduct={products}></Product> */}
       </div>
     </>
+
 
   );
 }

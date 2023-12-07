@@ -5,9 +5,12 @@ import Product from "./components/Product/Product";
 import { useState, useEffect } from "react";
 import Home from './components/Home/Home';
 import Cart from './components/Cart/Cart';
-import Vendor from './components/Vendor/Vendor';
+// import Vendor from './components/Vendor/Vendor';
 import Signin from "./components/Signin/Signin";
 import Signup from "./components/Signup/Signup";
+import Insertproducts from "./components/InsertProducts/Insertproducts";
+
+
 const App = () => {
   const products = [{
     type: "laptop",
@@ -29,9 +32,9 @@ const App = () => {
       "./prouducts_photo/Laptops/LENOVO THINKPAD E14/5.png"],
     stars: "4.8",
   },
-    {
-      type: "laptop",
-      description: "Details\n\
+  {
+    type: "laptop",
+    description: "Details\n\
                         Lenovo Ideapad Gaming 3\n\
                         Core I7-12650H\n\
                         16G Ram\n\
@@ -39,19 +42,19 @@ const App = () => {
                         VGA Nvidia 4G RTX 3050Ti\n\
                         15.6 FHD 165Hz\n\
                         Color gray",
-      model: "Lenovo Ideapad Gaming 3",
-      price: "$1,482",
-      stock: "5",
-      images: ["./prouducts_photo/Laptops/Lenovo Ideapad Gaming 3/1.png",
-        "./prouducts_photo/Laptops/Lenovo Ideapad Gaming 3/2.png",
-        "./prouducts_photo/Laptops/Lenovo Ideapad Gaming 3/3.png",
-        "./prouducts_photo/Laptops/Lenovo Ideapad Gaming 3/4.png",
-        "./prouducts_photo/Laptops/Lenovo Ideapad Gaming 3/5.png"],
-      stars: "3",
-    },
-    {
-      type: "laptop",
-      description: "Details\n\
+    model: "Lenovo Ideapad Gaming 3",
+    price: "$1,482",
+    stock: "5",
+    images: ["./prouducts_photo/Laptops/Lenovo Ideapad Gaming 3/1.png",
+      "./prouducts_photo/Laptops/Lenovo Ideapad Gaming 3/2.png",
+      "./prouducts_photo/Laptops/Lenovo Ideapad Gaming 3/3.png",
+      "./prouducts_photo/Laptops/Lenovo Ideapad Gaming 3/4.png",
+      "./prouducts_photo/Laptops/Lenovo Ideapad Gaming 3/5.png"],
+    stars: "3",
+  },
+  {
+    type: "laptop",
+    description: "Details\n\
                         HP Probook 450 G9\n\
                         Core I5 - 1235U\n\
                         15.6 HD\n\
@@ -59,19 +62,19 @@ const App = () => {
                         512GB SSD\n\
                         MX570 2GB - DOS\n\
                         color Silver Aluminum",
-      model: "HP Probook 450",
-      price: "$1,335",
-      stock: "6",
-      images: ["./prouducts_photo/Laptops/HP Probook 450/1.png",
-        "./prouducts_photo/Laptops/HP Probook 450/2.png",
-        "./prouducts_photo/Laptops/HP Probook 450/3.png",
-        "./prouducts_photo/Laptops/HP Probook 450/4.png",
-        "./prouducts_photo/Laptops/HP Probook 450/5.png"],
-      stars: 3.5,
-    },
-    {
-      type: "laptop",
-      description: "Details\n\
+    model: "HP Probook 450",
+    price: "$1,335",
+    stock: "6",
+    images: ["./prouducts_photo/Laptops/HP Probook 450/1.png",
+      "./prouducts_photo/Laptops/HP Probook 450/2.png",
+      "./prouducts_photo/Laptops/HP Probook 450/3.png",
+      "./prouducts_photo/Laptops/HP Probook 450/4.png",
+      "./prouducts_photo/Laptops/HP Probook 450/5.png"],
+    stars: 3.5,
+  },
+  {
+    type: "laptop",
+    description: "Details\n\
                         Lenovo Legion 5 Pron\n\
                         Core I7 12700H \n\
                         32G Ram \n\
@@ -80,32 +83,34 @@ const App = () => {
                         RTX 3060 -16.0\n\
                         WQXGA 165Hz DOS\n\
                         Color Gery = >>  EGP 78,390.00",
-      model: "Lenovo Legion 5 Pro",
-      price: "$2,536",
-      stock: "9",
-      images: ["./prouducts_photo/Laptops/Lenovo Legion 5 Pro/1.png",
-        "./prouducts_photo/Laptops/Lenovo Legion 5 Pro/2.png",
-        "./prouducts_photo/Laptops/Lenovo Legion 5 Pro/3.png",
-        "./prouducts_photo/Laptops/Lenovo Legion 5 Pro/4.png",
-        "./prouducts_photo/Laptops/Lenovo Legion 5 Pro/5.png"],
-      stars: "3.9",
-    }]
-  
-  
-  
+    model: "Lenovo Legion 5 Pro",
+    price: "$2,536",
+    stock: "9",
+    images: ["./prouducts_photo/Laptops/Lenovo Legion 5 Pro/1.png",
+      "./prouducts_photo/Laptops/Lenovo Legion 5 Pro/2.png",
+      "./prouducts_photo/Laptops/Lenovo Legion 5 Pro/3.png",
+      "./prouducts_photo/Laptops/Lenovo Legion 5 Pro/4.png",
+      "./prouducts_photo/Laptops/Lenovo Legion 5 Pro/5.png"],
+    stars: "3.9",
+  }]
+
+
+
   return (
-      <>
-        <Router>
+    <>
+      <Router>
         <Routes>
-          <Route path={ROUTES.LANDING} element={<><Header /><Home />    <Product Allproduct={products}></Product>
-</>}>
+          <Route path={ROUTES.LANDING} element={<><Header /><Home /> <Product Allproduct={products} IsVendor="false"></Product>
+          </>}>
             <Route path={ROUTES.HOME} element={<><Header /><Home /></>} />
           </Route>
-          
-          <Route path={ROUTES.CART} element={<><Header /><Cart /></>} />
-          <Route path={ROUTES.VENDOR} element={<><Header /><Vendor /> <Product Allproduct={products} IsVendor="true"></Product> </>} />
-          <Route path={ROUTES.SIGN_IN} element={<><Header /><Signin /></>} />
-          <Route path={ROUTES.SIGN_UP} element={<><Header /><Signup /></>} />
+          <Route path={ROUTES.CART} element={<><Cart /></>} />
+          <Route path={ROUTES.VENDOR} element={<><Header /><Product Allproduct={products} IsVendor="false"></Product></>} />
+          <Route path={ROUTES.SIGN_IN} element={<><Signin /></>} />
+          <Route path={ROUTES.SIGN_UP} element={<><Signup /></>} />
+          <Route path={ROUTES.PRODUCTS} element={<><Header /><Product Allproduct={products} IsVendor="true"></Product></>} />
+          {/* Insertproducts */}
+          <Route path={ROUTES.Insertproducts} element={<>< Insertproducts /></>} />
         </Routes>
       </Router>
     </>
