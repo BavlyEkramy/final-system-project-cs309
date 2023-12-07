@@ -24,9 +24,7 @@ const Product = (props) => {
         <>
             <div className="product-item">
                 <div className="figure">
-                    {/* <img src="../../frontend/src/prouducts_photo/Laptops/Acer Aspire 5 A515-45G-R1KS/1.png" alt=""/> */}
-
-                    <img src={product.images[0]} alt="" />
+                    <img src={product.images[0]} alt="product.model" />
                     <div className="product-info">
                         <div className="d_col" >
                             <span>{product.model}</span>

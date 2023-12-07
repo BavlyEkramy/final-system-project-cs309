@@ -11,7 +11,6 @@ import Signup from "./components/Signup/Signup";
 import Insertproducts from "./components/InsertProducts/Insertproducts";
 import UserContext from "./Services/UserContext";
 
-
 const App = () => {
   const [isLogin, setLogin] = useState(false);
   const {userData, setUserData} = useState({});
@@ -110,7 +109,7 @@ const App = () => {
             <Route path={ROUTES.HOME} element={<><Header /><Home /></>} />
           </Route>
           
-          <Route path={ROUTES.CART} element={<> <img scr="./prouducts_photo/Laptops/Lenovo Legion 5 Pro/2.png"></img> <Header /><Cart /></>} />
+          <Route path={ROUTES.CART} element={<> <Header /><Cart /></>} />
           <Route path={ROUTES.VENDOR} element={<><Header /><Vendor /> <Product Allproduct={products} IsVendor="true"></Product> </>} />
           <Route path={ROUTES.SIGN_IN} element={<><Signin /></>} />
           <Route path={ROUTES.SIGN_UP} element={<><Signup /></>} />
