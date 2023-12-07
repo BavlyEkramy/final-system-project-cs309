@@ -74,6 +74,8 @@ header nav ul li a {
 
 header .search {
   flex: 1.2;
+  height: 60px;
+  text-align: center;
 }
 
 header .sign {
@@ -85,7 +87,7 @@ header .sign a {
   text-decoration: none;
 }
 
-header .sign input, header .sign a, header .sign .username {
+header .sign input, header .sign a, header .sign .user {
   border: 1px solid #fff;
   border-radius: 6px;
   font-weight: bold;
@@ -94,10 +96,22 @@ header .sign input, header .sign a, header .sign .username {
   padding: 10px;
   text-transform: capitalize;
   margin: 5px;
+  height: 60px;
+  align-items: center;
+  display: flex;
 }
 
-header .sign .username {
+header .sign .user {
+  border: none;
+}
+
+header .sign .user {
   padding: 8px;
+}
+
+header .sign .user .MuiAvatar-icon {
+  width: 10px;
+  height: 10px
 }
 
 header .sign input:hover, header .sign a:hover {
