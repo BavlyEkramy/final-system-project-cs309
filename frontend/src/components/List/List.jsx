@@ -1,8 +1,11 @@
 import Search from '../Search/Search';
 import './index.css';
 import { Link } from "react-router-dom";
+import UserContext from '../../Services/UserContext';
+import { useContext } from 'react';
 
 const List = props => {
+  const {isLogin, setLogin, userData, setUserData} = useContext(UserContext);
   return (
     <div className='list'>
       <div className="close">
@@ -13,15 +16,15 @@ const List = props => {
         <li><Link to="/home">Home</Link></li>
         <li><Link to="/cart">Cart</Link></li>
         <li><Link to="/vendor">Vendor</Link></li>
-        {!props.login ?
+        {isLogin?
           <>
           <li><Link to='/signin'>Sign in</Link></li>
           </>
           :
           <>
-          <li><div className='username'>Name</div></li>
+          <li><div className='username'>{userData.firstName}</div></li>
           <li><input className='log-out' type='button' value='log out' onClick={()=> {
-            props.setLogin(false);
+            setLogin(false);
           }}/></li>
           </>
         }
