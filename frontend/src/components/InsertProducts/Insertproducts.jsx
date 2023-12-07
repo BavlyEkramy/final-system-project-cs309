@@ -27,10 +27,10 @@ const Insertproducts = () => {
 
 <div className='insertPhoto'>
 
-<motion.div className='container'>
 
 
-<motion.div className ='inner'>
+
+
 
 {arr.map((e)=>(
 
@@ -40,11 +40,11 @@ const Insertproducts = () => {
 
 ))}
 
-</motion.div>
 
 
 
-</motion.div>
+
+
 
 
 <input  type="file"  />
