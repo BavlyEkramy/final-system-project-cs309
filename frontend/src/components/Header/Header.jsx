@@ -11,7 +11,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import UserContext from '../../Services/UserContext';
 
 const Header = props => {
-	const {isLogin, setLogin} = useContext(UserContext);
+	const {isLogin, setLogin, userData, setUserData} = useContext(UserContext);
 	const [showMenu, setShowMenu] = useState(false);
 	return (
 		<>
@@ -39,7 +39,7 @@ const Header = props => {
 					
 					:
 					<>
-					<div className='username'>Name</div>
+					<div className='username'>{userData.firstName}</div>
 					<input type='button' value='log out' onClick={()=> {
 						setLogin(false);
 					}}/>
