@@ -1,3 +1,7 @@
+.list .search {
+  width: 100%;
+}
+
 .list {
   position: fixed;
   top: 0;
@@ -66,4 +70,12 @@
   background-color: transparent;
   font-weight: bold;
   font-size: 30px;
+}
+
+.list .log-out, .list .username {
+  border: none;
+  background-color: transparent;
+  font-weight: bold;
+  color: #fff;
+  font-size: 20px;
 }
