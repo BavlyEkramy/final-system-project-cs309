@@ -1,6 +1,6 @@
 import './index.css';
 import List from '../List/List';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import {Link} from "react-router-dom";
 import Search from '../Search/Search';
@@ -8,8 +8,10 @@ import Search from '../Search/Search';
 import Badge from '@mui/material/Badge';
 // import MailIcon from '@mui/icons-material/Mail';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import UserContext from '../../Services/UserContext';
+
 const Header = props => {
-	const [login, setLogin] = useState(true);
+	const {isLogin, setLogin} = useContext(UserContext);
 	const [showMenu, setShowMenu] = useState(false);
 	return (
 		<>
@@ -31,7 +33,7 @@ const Header = props => {
 			</nav>
 			<Search placeholder="Search for products"/>
 			<div className='sign flex-box'>
-				{!login ?
+				{!isLogin ?
 					
 					<Link to='/signin'>Sign in</Link>
 					
@@ -49,7 +51,7 @@ const Header = props => {
 			</div>
 		</div>
 	</header>
-	{showMenu && <List login={login} setLogin={setLogin} show={setShowMenu}/>}
+	{showMenu && <List show={setShowMenu}/>}
 	</>
   );
 };
