@@ -49,9 +49,14 @@ const Header = props => {
 					
 					:
 					<>
+<<<<<<< HEAD
 					<div className='username'>{userData}</div>
+=======
+					<div className='username'>{userData ? userData.email: "Name"}</div>
+>>>>>>> 6839a398462e7af6a86e50d87ee67987da88c195
 					<input type='button' value='log out' onClick={()=> {
 						setLogin(false);
+						setUserData(null);
 					}}/>
 					</>
 				}
