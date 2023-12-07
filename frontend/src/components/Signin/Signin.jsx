@@ -5,7 +5,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -15,6 +14,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import UserContext from '../../Services/UserContext';
+import { Link } from 'react-router-dom';
+import * as ROUTES from '../../constants/routes';
 
 function Copyright(props) {
   return (
@@ -143,12 +144,12 @@ export default function SignIn() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                <Link to={ROUTES.PASSWORD_FORGET} variant="body2">
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link to={ROUTES.SIGN_UP}>
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

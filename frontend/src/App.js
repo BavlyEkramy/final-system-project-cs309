@@ -14,7 +14,7 @@ import UserContext from "./Services/UserContext";
 
 const App = () => {
   const [isLogin, setLogin] = useState(false);
-  const {data, setData} = useState({});
+  const {userData, setUserData} = useState({});
   const userLogin = {isLogin, setLogin, userData, setUserData};
   
   const products = [{
