@@ -1,13 +1,16 @@
 'use client'
 import React from "react";
 import './index.css';
-import { useState, useEffect } from 'react';
-
+import { useEffect } from 'react';
 import Item from "../Product/item";
+import VendorProduct from "../VendorProduct/VendorProduct";
+import AddItem from "../VendorProduct/AddItem";
+
+import { Button } from "@mui/material";
 
 
 const Product = (props) => {
-
+  const { Allproduct, IsVendor } = props
   useEffect(() => {
     let heart_icon = document.querySelectorAll(".product-item .product-info i")
     heart_icon.forEach((z) => {
@@ -20,20 +23,27 @@ const Product = (props) => {
     })
   })
 
-  // console.log(props.Allproduct)
-
+  // console.log(Allproduct)
   return (
     <>
       <div id="product-container">
-        <div id="AllProduct-item">
-          {props.Allproduct
-            .map((p, i) => (
-              <Item ro={p} key={i} />
-            ))}
-        </div>
+        {
+          IsVendor &&  
+          <AddItem/>
+        }
+
+        {
+          !IsVendor ?
+            Allproduct.map((p, i) => (
+              <Item product={p} key={i} />
+            ))
+            :
+
+            Allproduct.map((p, i) => (
+              <VendorProduct product={p} key={i} />
+            ))
+        }
       </div>
-
-
     </>
   );
 };

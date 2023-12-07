@@ -5,7 +5,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -14,6 +13,9 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import UserContext from '../../Services/UserContext';
+import { Link } from 'react-router-dom';
+import * as ROUTES from '../../constants/routes';
 
 function Copyright(props) {
   return (
@@ -33,12 +35,13 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
-
+  const {isLogin, setLogin, userData, setUserData} = React.useContext(UserContext);
   const history = useNavigate();
   const dataInfo  = {
     email:null,
     password:null,
   };
+  const a = false;
   const  handelSubmit = async(e) =>{
     e.preventDefault();
     
@@ -46,20 +49,29 @@ export default function SignIn() {
             await axios.post("http://localhost:8000/login" , dataInfo)
             .then( res =>{
                 console.log(res.data);
+             
                 if(res.data === "Email Dose Not Exist" || res.data === "Email or Password is not correct"){
+                  
+                 
                     const p = document.createElement('p');
                     p.textContent = res.data;
                     const Signin = document.getElementsByClassName('Signin')[0];
                     Signin.appendChild(p); 
                 }else{
                     history('/home');
+                    setLogin(true);
+                    setUserData(res.data);
                 }
             }).catch(error=>{
                 console.log(error);
+               
             })
 
         } catch (error) {
             console.log(error);
+            a=true;
+            console.log(a);
+            
         }
   }
   const handleChange = (event) => {
@@ -94,8 +106,10 @@ export default function SignIn() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
+       
           <Box component="form" onChange={handleChange} onSubmit={handelSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
+              error={a}
               margin="normal"
               required
               fullWidth
@@ -130,12 +144,12 @@ export default function SignIn() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                <Link to={ROUTES.PASSWORD_FORGET} variant="body2">
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link to={ROUTES.SIGN_UP}>
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

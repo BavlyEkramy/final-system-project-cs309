@@ -1,12 +1,17 @@
 import './index.css';
 import List from '../List/List';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import {Link} from "react-router-dom";
 import Search from '../Search/Search';
 
+import Badge from '@mui/material/Badge';
+// import MailIcon from '@mui/icons-material/Mail';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import UserContext from '../../Services/UserContext';
+
 const Header = props => {
-	const [login, setLogin] = useState(true);
+	const {isLogin, setLogin, userData, setUserData} = useContext(UserContext);
 	const [showMenu, setShowMenu] = useState(false);
 	return (
 		<>
@@ -18,19 +23,23 @@ const Header = props => {
 			<nav className="flex-box">
 				<ul>
 					<li><Link to="/home">Home</Link></li>
-					<li><Link to="/cart">Cart</Link></li>
+							<li><Link to="/cart">Cart </Link>
+								<Badge badgeContent={4} color="primary">
+									<ShoppingCartIcon />
+								</Badge>
+							</li>
 					<li><Link to="/vendor">Vendor</Link></li>
         </ul>
 			</nav>
-			<Search />
+			<Search placeholder="Search for products"/>
 			<div className='sign flex-box'>
-				{!login ?
+				{!isLogin ?
 					
 					<Link to='/signin'>Sign in</Link>
 					
 					:
 					<>
-					<div className='username'>Name</div>
+					<div className='username'>{userData.firstName}</div>
 					<input type='button' value='log out' onClick={()=> {
 						setLogin(false);
 					}}/>
@@ -42,7 +51,7 @@ const Header = props => {
 			</div>
 		</div>
 	</header>
-	{showMenu && <List login={login} setLogin={setLogin} show={setShowMenu}/>}
+	{showMenu && <List show={setShowMenu}/>}
 	</>
   );
 };

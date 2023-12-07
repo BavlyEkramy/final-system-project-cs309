@@ -1,11 +1,24 @@
 import './index.css';
+// import Product from "../Product/Product";
 
 
 const Vendor = () => {
-  return(
-    <div className='vendor'>hi
-    
-</div>
+  const products = [
+    { name: "laptop1", id: "15" },
+    { name: "laptop2" },
+    { name: "laptop3" },
+    { name: "laptop1", id: "15" },
+
+
+  ];
+  return (
+    <>
+      <div className='vendor'>
+        {/* <Product Allproduct={products}></Product> */}
+      </div>
+    </>
+
+
   );
 }
 
