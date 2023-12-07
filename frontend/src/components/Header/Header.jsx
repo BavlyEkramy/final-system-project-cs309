@@ -29,7 +29,7 @@ const Header = props => {
 					<li><Link to="/vendor">Vendor</Link></li>
         </ul>
 			</nav>
-			<Search />
+			<Search placeholder="Search for products"/>
 			<div className='sign flex-box'>
 				{!login ?
 					

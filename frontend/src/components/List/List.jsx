@@ -1,3 +1,4 @@
+import Search from '../Search/Search';
 import './index.css';
 import { Link } from "react-router-dom";
 
@@ -7,6 +8,7 @@ const List = props => {
       <div className="close">
       <input className='close-btn' type='button' value='X' onClick={() => props.show(false)}/>
       </div>
+      <Search placeholder="Search for products"/>
       <ul className='myList' onClick={() => props.show(false)}>
         <li><Link to="/home">Home</Link></li>
         <li><Link to="/cart">Cart</Link></li>
@@ -18,7 +20,7 @@ const List = props => {
           :
           <>
           <li><div className='username'>Name</div></li>
-          <li><input type='button' value='log out' onClick={()=> {
+          <li><input className='log-out' type='button' value='log out' onClick={()=> {
             props.setLogin(false);
           }}/></li>
           </>
