@@ -39,7 +39,7 @@ const Header = props => {
 					
 					:
 					<>
-					<div className='username'>{userData.firstName}</div>
+					<div className='username'>Name</div>
 					<input type='button' value='log out' onClick={()=> {
 						setLogin(false);
 					}}/>

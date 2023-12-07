@@ -22,7 +22,7 @@ const List = props => {
           </>
           :
           <>
-          <li><div className='username'>{userData.firstName}</div></li>
+          <li><div className='username'>Name</div></li>
           <li><input className='log-out' type='button' value='log out' onClick={()=> {
             setLogin(false);
           }}/></li>

@@ -35,7 +35,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-    const {isLogin, setLogin, userData, setUserData} = React.useContext(UserContext);
+    const {isLogin, setLogin} = React.useContext(UserContext);
     const history= useNavigate();
 
     const dataInfo={ 
@@ -67,11 +67,13 @@ export default function SignUp() {
                 }else{
                     history('/home');
                     setLogin(true);
-                    setUserData(res.data);
+                    console.log(isLogin);
                 }
             }).catch(error => {
                 console.log(error);
             })
+
+            console.log(isLogin);
         } catch (error) {
           console.log(error);  
         }
