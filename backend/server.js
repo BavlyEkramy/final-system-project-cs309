@@ -293,12 +293,40 @@ server.get('/' , cors() , async (req , res)=>{
 // 2 => return products by type
 
 server.get('/getbytype' , cors() , async (req , res)=>{
-
+  
 });
 
 // 3 => return products by model
 
-server.get('/search' , cors() , async (req , res)=>{
+server.post('/search' , cors() , async (req , res)=>{
+
+     const model =req.body.model;
+
+     
+        const array=[];
+     try {
+       
+         
+      const pro = await Products.find();
+      for(let i =0; i<pro.length;i++){
+        if(model.toUpperCase()===(pro[i].model).slice(0,model.length)){
+            
+             array.push(pro[i]);
+        }
+      }
+      res.status(200).json(array);
+        
+        }
+        
+
+        
+     catch (error) {
+        res.status(400).send(error)
+        console.log(error)
+    }
+
+     
+       
 
 });
 
