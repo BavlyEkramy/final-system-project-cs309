@@ -11,3 +11,4 @@ export const CART = '/cart';
 export const USERS = '/users';
 export const VENDOR = '/vendor';
 export const Insertproducts = '/vendor/Insertproducts';
+export const PROFILE = '/profile';
