@@ -2,19 +2,21 @@ import Header from "./components/Header/Header";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import * as ROUTES from './constants/routes';
 import Product from "./components/Product/Product";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import Home from './components/Home/Home';
 import Cart from './components/Cart/Cart';
 import Vendor from './components/Vendor/Vendor';
 import Signin from "./components/Signin/Signin";
 import Signup from "./components/Signup/Signup";
-// <<<<<<< HEAD
-// =======
 import Insertproducts from "./components/InsertProducts/Insertproducts";
+import UserContext from "./Services/UserContext";
 
 
-// >>>>>>> eaf7d946674016e0cd2d82b9d94660f9e667b8f0
 const App = () => {
+  const [isLogin, setLogin] = useState(false);
+  const {data, setData} = useState({});
+  const userLogin = {isLogin, setLogin, userData, setUserData};
+  
   const products = [{
     type: "laptop",
     description: "Details\n\
@@ -100,7 +102,7 @@ const App = () => {
   
   
   return (
-      <>
+      <UserContext.Provider value={userLogin}>
         <Router>
         <Routes>
           <Route path={ROUTES.LANDING} element={<><Header /><Home />    <Product Allproduct={products}></Product>
@@ -117,7 +119,7 @@ const App = () => {
           <Route path={ROUTES.Insertproducts} element={<>< Insertproducts /></>} />
         </Routes>
       </Router>
-    </>
+    </UserContext.Provider>
   );
 
 
