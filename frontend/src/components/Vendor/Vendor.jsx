@@ -1,32 +1,20 @@
 import './index.css';
 import Product from "../Product/Product";
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import ProductContext from '../../Services/ProductContext';
 
 
 const Vendor = () => {
 
 
-  const [vendorProducts, setVendorProducts] = useState([]);
-
-  const getVendorProducts = () => {
-    axios
-      .get('http://localhost:8000/vendorProduct')
-      .then(res => {
-        console.log(res.data);
-        setVendorProducts(res.data);
-      })
-      .catch(error => { console.log(error) });
-  }
-  useEffect(() => {
-    getVendorProducts();
-  }, []);
+  const {products, setProducts} = useContext(ProductContext);
 
   return (
     <>
       <div className='vendor'>
 
-        <Product Allproduct={vendorProducts} IsVendor={true} />
+        <Product Allproduct={products} IsVendor={true} />
       </div>
     </>
   );
