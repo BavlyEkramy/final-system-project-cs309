@@ -28,34 +28,45 @@ const Header = props => {
 									<ShoppingCartIcon />
 								</Badge>
 							</li>
-					<li><Link to="/vendor">Vendor</Link></li>
-					<li><Link to='/ProductInfo'>ProductInfo</Link></li>
-        </ul>
-			</nav>
-			<Search placeholder="Search for products"/>
-			<div className='sign flex-box'>
-				{!isLogin ?
-					
-					<Link to='/signin'>Sign in</Link>
 
-					
-					:
-					<>
-					<div className='username'>{userData.firstName}</div>
-					<input type='button' value='log out' onClick={()=> {
-						setLogin(false);
-					}}/>
-					</>
-				}
-			</div>
-			<div className="menu-icon">
-				<img src='images/burger-icon.jpg' onClick={()=> {setShowMenu(true)}} />
-			</div>
-		</div>
-	</header>
-	{showMenu && <List show={setShowMenu}/>}
-	</>
-  );
+							<li><Link to={ROUTES.VENDOR}>Vendor</Link></li>
+						</ul>
+					</nav>
+					<Search placeholder="Search" sx={{ mr: 50 }} />
+					<div className='sign flex-box'>
+						{!isLogin ?
+							<Link to={ROUTES.SIGN_IN}>Sign in</Link>
+							:
+							<>
+								<Link to={ROUTES.PROFILE}>
+									<div className='user'>
+										{
+											userData &&
+											<>
+												<Avatar alt='personal-image' src='images/personal_image.jpg' sx={{ width: 26, height: 26, mr: 1 }} />
+												{/* {(userData.firstName != "" && userData.firstName) ? */}
+												{/* <span>{userData.firstName}</span> */}
+												<span>{userData.email.substring(0, userData.email.indexOf('@'))}</span>
+											</>
+										}
+									</div>
+								</Link>
+								<input type='button' value='log out' onClick={() => {
+									setLogin(false);
+									setUserData(null);
+								}} />
+							</>
+						}
+					</div>
+					<div className="menu-icon" onClick={() => { setShowMenu(true) }}>
+						<MenuIcon />
+					</div>
+				</div>
+			</header>
+			{showMenu && <List show={setShowMenu} />}
+		</>
+	);
+
 };
 
 export default Header;

@@ -96,8 +96,24 @@ header .sign input, header .sign a, header .sign .username {
   margin: 5px;
 }
 
+
 header .sign .username {
   padding: 8px;
+}
+header .sign a {
+  text-decoration: none;
+  border: none
+}
+
+header .sign .user {
+  border: none;
+  padding: 10px;
+  height: 75px;
+}
+
+header .sign .user .MuiAvatar-icon {
+  width: 10px;
+  height: 10px
 }
 
 header .sign input:hover, header .sign a:hover {
@@ -145,9 +161,9 @@ header .menu-icon img {
 }
 
 @media (min-width: 768px) {
-	header .container {
+/* 	header .container {
 		width: 750px;
-	}
+	} */
 
 	header nav.flex-box, header .sign.flex-box {
 		display: flex;
@@ -167,32 +183,13 @@ header .menu-icon img {
   }
 }
 
-/* @media (max-width: 992px) {
-	body {
-		text-align: center;
-	}
 
-	.box {
-		width: 500px;
-	}
-
-	.social-media-links {
-		justify-content: center;
-	}
-
-	.home p {
-		font-size: 1.55em;
-	}
-} */
 
 @media (min-width: 992px) {
 	header .container {
 		width: 970px;
 	}
 
-  /* header .search {
-    width: 240px
-  } */
 }
 
 @media (min-width: 1200px) {
@@ -200,3 +197,4 @@ header .menu-icon img {
 		width: 1170px;
 	}
 }
+
