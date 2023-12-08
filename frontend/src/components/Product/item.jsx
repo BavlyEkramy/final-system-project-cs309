@@ -6,12 +6,14 @@ import UserContext from "../../Services/UserContext";
 import axios from "axios";
 
 
-const ProductItem = (props) => {
+
+const Item = (props) => {
     const { product } = props;
-    const { userData, setUserData } = useContext(UserContext);
+    const {userData, setUserData} = useContext(UserContext);
     useEffect(() => {
         let heart_icon = document.querySelectorAll(".product-item .product-info i")
         heart_icon.forEach((z) => {
+
             z.onclick = function () {
                 console.log("message")
                 if (z.className === "fas fa-heart") {
@@ -20,20 +22,18 @@ const ProductItem = (props) => {
             }
         })
     })
-
     // add to schema 
-    const addToCart = () => {
+    const AddToCart = () => {
         let userID = userData['_id'];
         let productID = product['_id'];
-        axios.post('http://localhost:8000/addCard', { "userId": userData['_id'], "productId": product['_id'] })
-            .then(res => {
-                console.log(res.data);
-            })
-            .catch(error => {
-                console.log(error);
-            })
+        axios.post('http://localhost:8000/addCard', {"userId": userData['_id'], "productId": product['_id']})
+        .then(res => {
+            console.log(res.data);
+        })
+        .catch(error => {
+            console.log(error);
+        })
     }
-
     return (
         <>
             <div className="product-item">
@@ -49,14 +49,13 @@ const ProductItem = (props) => {
                 </div>
                 {
                     <div className="d_col">
-                        <button value="price" name="Slim Fit Suit Black" className="btn" onClick={addToCart}>
+                        <button value="price" name="Slim Fit Suit Black" className="btn" onClick={AddToCart}>
                             <i className="fas fa-shopping-bag" ></i> Add to cart </button>
                         <b className="price">8754 $</b>
-                    </div>
-                }
+                    </div>}
             </div>
         </>
     );
 };
 
-export default ProductItem;
+export default Item;

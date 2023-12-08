@@ -5,7 +5,7 @@
     background-color: rgba(198, 208, 215, 0.3);
     border-top-left-radius: 50px;
     border-bottom-right-radius: 50px;
-    box-shadow: 7px 7px 45px rgb(0, 0, 0, 0.4);
+    box-shadow: 7px 7px 45px rgba(51, 102, 212, 0.4);
     padding: 30px 50px;
 }
 
@@ -14,8 +14,6 @@
     height: 250px;
     border-radius: 15px;
     margin-bottom: 5px;
-
-
 }
 
 #image {
@@ -23,8 +21,11 @@
     width: 210px;
     height: 250px;
     text-align: center;
-    margin-bottom: 70px;   
+    margin-bottom: 90px;   
      margin-left: 30px;
+}
+#avatar {
+    margin-bottom :10px ;
 }
 
 .Profilo-section h2 {
