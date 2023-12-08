@@ -54,21 +54,25 @@ export default function SignUp() {
       national:null
     }
     let signup = false;
-    const p = document.createElement('p');
-    const Signup = document.getElementsByClassName('Signup')[0];
+    
     const handleSubmit= async(event)=>{
       event.preventDefault();
       if(signup){
         try {
             await axios.post("http://localhost:8000/signup" ,dataInfo )
             .then(res =>{
+                setLogin(true);
+                setUserData((res.data));
+
                 if(res.data === "Email is already Exist"){
+                  const p = document.createElement('p');
                   p.textContent = res.data;
-                  Signup.appendChild(p); 
+                  const signupForm = document.querySelector('.MuiBox-root');
+                  signupForm.appendChild(p);
+                  setLogin(false);
+                  setUserData({});
                 }else{
-                    history('/home');
-                    setLogin(true);
-                    setUserData((res.data));
+                    history('/home');    
                 }
             }).catch(error => {
                 console.log(error);
