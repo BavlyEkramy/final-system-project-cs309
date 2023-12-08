@@ -7,7 +7,7 @@ import axios from "axios";
 
 
 
-const Item = (props) => {
+const ProductItem = (props) => {
     const { product } = props;
     const {userData, setUserData} = useContext(UserContext);
     useEffect(() => {
@@ -24,7 +24,7 @@ const Item = (props) => {
     })
 
     // add to schema 
-    const AddToCart = () => {
+    const addToCart = () => {
         let userID = userData['_id'];
         let productID = product['_id'];
         
@@ -52,13 +52,14 @@ const Item = (props) => {
                 </div>
                 {
                     <div className="d_col">
-                        <button value="price" name="Slim Fit Suit Black" className="btn" onClick={AddToCart}>
+                        <button value="price" name="Slim Fit Suit Black" className="btn" onClick={addToCart}>
                             <i className="fas fa-shopping-bag" ></i> Add to cart </button>
                         <b className="price">8754 $</b>
-                    </div>}
+                    </div>
+                }
             </div>
         </>
     );
 };
 
-export default Item;
+export default ProductItem;
