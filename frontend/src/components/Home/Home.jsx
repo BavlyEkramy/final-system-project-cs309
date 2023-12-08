@@ -1,31 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Product from "../Product/Product";
 import axios from "axios";
 import ErrorPage from "../ErrorPage/ErrorPage";
+import ProductContext from "../../Services/ProductContext";
 
 const Home = () => {
   // return <div>Home</div>
-  const [products, setProducts] = useState([]);
-
-  const getAllProducts = () => {
-    axios
-    .get('http://localhost:8000/vendorProduct') // This will be edit when the all products api is added
-    .then(res => {
-      console.log(res.data);
-      setProducts(res.data);
-      console.log(products);
-    })
-    .catch(error => {console.log(error)});
-  }
-
-  useEffect(() => {
-    getAllProducts();
-  }, []);
+  const {products, setProducts} = useContext(ProductContext);
 
   return (
     <>
     <div className="home">
-      <Product Allproduct={products} IsVendor={false} />
+      {products && <Product Allproduct={products} IsVendor={false} />}
     </div>
     </>
   );

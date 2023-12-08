@@ -1,12 +1,15 @@
 'use client'
-import React from "react";
+import React, { useContext } from "react";
 import './index.css';
 import { useState, useEffect } from 'react';
+import UserContext from "../../Services/UserContext";
+import axios from "axios";
 
 
 
-const Item = (props) => {
+const ProductItem = (props) => {
     const { product } = props;
+    const {userData, setUserData} = useContext(UserContext);
     useEffect(() => {
         let heart_icon = document.querySelectorAll(".product-item .product-info i")
         heart_icon.forEach((z) => {
@@ -21,10 +24,19 @@ const Item = (props) => {
     })
 
     // add to schema 
-    function AddToCart() {
+    const addToCart = () => {
+        let userID = userData['_id'];
+        let productID = product['_id'];
         
-        console.log("AddToCart")
+        axios.post('http://localhost:8000/addCard', {"userId": userData['_id'], "productId": product['_id']})
+        .then(res => {
+            console.log(res.data);
+        })
+        .catch(error => {
+            console.log(error);
+        })
     }
+    
     return (
         <>
             <div className="product-item">
@@ -40,13 +52,14 @@ const Item = (props) => {
                 </div>
                 {
                     <div className="d_col">
-                        <button value="price" name="Slim Fit Suit Black" className="btn" onClick={AddToCart}>
+                        <button value="price" name="Slim Fit Suit Black" className="btn" onClick={addToCart}>
                             <i className="fas fa-shopping-bag" ></i> Add to cart </button>
                         <b className="price">8754 $</b>
-                    </div>}
+                    </div>
+                }
             </div>
         </>
     );
 };
 
-export default Item;
+export default ProductItem;
