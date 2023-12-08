@@ -111,7 +111,7 @@ const App = () => {
           </Route>
           
           <Route path={ROUTES.CART} element={<> <Header /><Cart /></>} />
-          <Route path={ROUTES.VENDOR} element={<><Header /><Vendor /> <Product Allproduct={products} IsVendor="true"></Product> </>} />
+          <Route path={ROUTES.VENDOR} element={<><Header /><Vendor />  </>} />
           <Route path={ROUTES.SIGN_IN} element={<><Signin /></>} />
           <Route path={ROUTES.SIGN_UP} element={<><Signup /></>} />
           <Route path={ROUTES.PRODUCTS} element={<><Header /><Product /></>} />
