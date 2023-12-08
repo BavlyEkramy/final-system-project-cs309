@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <>
     <div className="home">
-      {products && <Product Allproduct={products} IsVendor={false} />}
+      {products && <Product Allproduct={products} IsVendor={false} isCart={false} />}
     </div>
     </>
   );

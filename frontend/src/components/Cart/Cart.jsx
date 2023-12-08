@@ -33,7 +33,7 @@ const Cart = () => {
 
   return (
     <div className='cart'>
-      {userProducts && <Product Allproduct={userProducts} IsVendor="false" />}
+      {userProducts && <Product Allproduct={userProducts} IsVendor={false} isCart={true}/>}
     </div>
   );
 }
