@@ -9,6 +9,7 @@ import AddItem from "../VendorProduct/AddItem";
 
 const Product = (props) => {
   const { Allproduct, IsVendor } = props
+
   useEffect(() => {
     let heart_icon = document.querySelectorAll(".product-item .product-info i")
     heart_icon.forEach((z) => {
@@ -29,7 +30,7 @@ const Product = (props) => {
           IsVendor &&
           <AddItem />
         }
-        {
+        {Allproduct&&(
           !IsVendor ?
             Allproduct.map((p, i) => (
               <ProductItem product={p} key={i} />
@@ -37,7 +38,7 @@ const Product = (props) => {
             :
             Allproduct.map((p, i) => (
               <VendorProduct product={p} key={i} />
-            ))
+            )))
         }
       </div>
     </>
