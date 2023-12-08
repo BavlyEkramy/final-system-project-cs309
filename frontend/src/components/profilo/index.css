@@ -48,11 +48,6 @@
     flex-direction: row-reverse;
     flex-wrap: wrap;
 }
-
-/* Button{
-    margin: auto;
-} */
-
 @media(max-width:1050px) {
     .profile-info {
         grid-template-columns: repeat(1, 1fr);
@@ -60,17 +55,12 @@
 }
 @media(max-width:800px) {
     .div {
-        /* display: flex; */
         justify-content: center;
-        /* flex-direction: row-reverse; */
     }
 
 }
-
 @media(max-width:600px) {
 #image {
         margin-left: 0px;
     }
-
-
 }
