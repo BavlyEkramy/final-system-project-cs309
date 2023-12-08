@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 
 
 
-const Product = (props) => {
+const Item = (props) => {
     const { product } = props;
     useEffect(() => {
         let heart_icon = document.querySelectorAll(".product-item .product-info i")
@@ -49,4 +49,4 @@ const Product = (props) => {
     );
 };
 
-export default Product;
+export default Item;
