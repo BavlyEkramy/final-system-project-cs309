@@ -2,7 +2,7 @@
 import React from "react";
 import './index.css';
 import { useEffect } from 'react';
-import Item from "./item";
+import ProductItem from "./ProductItem";
 import VendorProduct from "../VendorProduct/VendorProduct";
 import AddItem from "../VendorProduct/AddItem";
 
@@ -32,7 +32,7 @@ const Product = (props) => {
         {
           !IsVendor ?
             Allproduct.map((p, i) => (
-              <Item product={p} key={i} />
+              <ProductItem product={p} key={i} />
             ))
             :
             Allproduct.map((p, i) => (
