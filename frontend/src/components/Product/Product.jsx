@@ -2,7 +2,7 @@
 import React from "react";
 import './index.css';
 import { useEffect } from 'react';
-import Item from "../Product/Item";
+import Item from "../Product/item"
 import VendorProduct from "../VendorProduct/VendorProduct";
 import AddItem from "../VendorProduct/AddItem";
 

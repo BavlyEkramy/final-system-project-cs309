@@ -8,7 +8,7 @@ const bcrypt = require("bcrypt");
 
 const Products = require("./moduls/products");
 const Users = require("./moduls/users");
-const Cards = require("./moduls/Card");
+const Cards = require("./moduls/card");
 const vendorProduct =require("./moduls/vendorProduct");
 
 const e = require("express");
@@ -304,12 +304,8 @@ server.post('/search' , cors() , async (req , res)=>{
 
 server.post('/cards' , cors() , async (req , res)=>{
     const UserId = req.body.userId;
-
      let arr=[];
-       
     try{
-
-    
         const userCards =await Cards.find({userId:UserId});
         if(userCards===null){
             res.json("This user haven't cards");
@@ -317,15 +313,10 @@ server.post('/cards' , cors() , async (req , res)=>{
         else{
        for(let i=0;i<userCards.length;i++){
          const prod=await Products.findById(userCards[i].productId);
-
           arr.push(prod);
-       
-
        }
        res.status(200).json(arr);
     }
-     
-
     }
     catch(error){
         res.status(400).json(error);
@@ -336,23 +327,15 @@ server.post('/cards' , cors() , async (req , res)=>{
 // 2 => delete product from card 
 
 server.delete('/deletecard' , cors() , async (req , res)=>{
-    const UserId = req.body.Userid;
+    const UserId = req.body.userId;
     const productId = req.body.productId; 
     try {
-        const user = await Users.findById(UserId);
-        if(user == null){
-            res.json("user is not found");
+        const card = await Cards.deleteOne({userId : UserId  , productId : productId });
+        if(card == null){
+            res.json("This user haven't this product");
         }else{
-            const card = user.card;
-            if(card.length === 0){
-                res.json("Empity");
-            }else{
-                const product = card.filter((e)=> e != productId);
-                user.card = product;
-                await user.save();
-                res.status(200).json(product);
+            res.status(200).json(card);
             }
-        }
     } catch (error) {
         res.status(400).json(error);
         console.log(error);
@@ -512,7 +495,7 @@ server.post('/signup' , cors() , async(req , res)=>{
 
 //listen on Mongodb 
 mongoose.set("strictQuery", false);
-mongoose.connect('mongodb://127.0.0.1:27017/Shop')
+mongoose.connect('mongodb+srv://youssef01554600530:2127148@cluster0.etcx7ae.mongodb.net/?retryWrites=true&w=majority')
 .then(()=>{
     console.log('connected to MongoDB');
     // listen on specific port 
