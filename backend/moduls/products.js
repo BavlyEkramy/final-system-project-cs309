@@ -10,6 +10,7 @@ const productsSchema = new Schema(
         stock: { type: Number, required: true },
         images: { type: Array, required: true },
         stars: { type: Number, required: true },
+        
     },
     {
         timestamps: true

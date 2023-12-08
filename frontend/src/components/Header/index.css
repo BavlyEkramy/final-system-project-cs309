@@ -15,6 +15,10 @@ header {
   overflow: hidden;
 }
 
+header .container {
+  width: 80%;
+}
+
 header .flex-box {
 	justify-content: space-between;
   align-items: center;
@@ -40,7 +44,7 @@ header .logo img {
 
 header nav {
   padding: 10px 15px;
-  flex: 2;
+  flex: 4;
   margin: 0;
   
 }
@@ -73,35 +77,52 @@ header nav ul li a {
 }
 
 header .search {
-  flex: 1;
+  flex: 1.2;
+  height: 50px;
+  text-align: center;
 }
 
 header .sign {
   justify-content: space-evenly;
   align-items: center;
-  flex: 1;
+  height: 70px;
+  border: none;
 }
 
-header .sign a {
-  text-decoration: none;
-}
-
-header .sign input, header .sign a, header .sign .username {
+header .sign input, header .sign .user, header .sign a {
   border: 1px solid #fff;
   border-radius: 6px;
   font-weight: bold;
   background-color: transparent;
   color: #fff;
-  padding: 15px;
-  text-transform: lowercase;
+  padding: 10px;
+  text-transform: capitalize;
+  margin: 5px;
+  height: 60px;
+  align-items: center;
+  display: flex;
 }
 
-header .sign .username {
+header .sign a {
+  text-decoration: none;
+  border: none
+}
+
+header .sign .user {
+  border: none;
   padding: 8px;
+  flex-direction: column;
+  height: 75px;
+}
+
+header .sign .user .MuiAvatar-icon {
+  width: 10px;
+  height: 10px
 }
 
 header .sign input:hover, header .sign a:hover {
   background-color: rgba(255, 255, 255, .3);
+  
 }
 
 header .sign input, header .sign a {
@@ -123,36 +144,34 @@ header .menu-icon img {
   opacity: var(--header-opacity);
 }
 
-@media (min-width: 320px) {
-	header .container {
-		width: 250px;
-	}
-
-	header .container nav, header .container .sign {
+@media (max-width: 767px) {
+  header .search {
+    display: none;
+  }
+  
+  header .container nav, header .container .sign {
 		display: none;
 	}
 
   header .logo {
-    flex: .5;
+    flex: 1;
   }
 }
 
-@media (max-width: 767px) {
-  header .search {
-    display: block;
-    width: 10px;
-    margin-left: 30px;
-  }
+@media (width: 768px) {
+  header .container nav, header .container .sign {
+		display: none;
+	}
 
-  header .sign input {
-    padding: 5px;
+  header .logo {
+    flex: 1;
   }
 }
 
 @media (min-width: 768px) {
-	header .container {
+	/* header .container {
 		width: 750px;
-	}
+	} */
 
 	header nav.flex-box, header .sign.flex-box {
 		display: flex;
@@ -162,12 +181,13 @@ header .menu-icon img {
     display: none;
   }
 
-  header .sign input {
-    padding: 5px;
+  header .search {
+    width: 10px;
+    font-size: 15px;
   }
 
-  header .search {
-    width: 200px
+  header .flex-box {
+    flex-wrap: nowrap;
   }
 }
 
@@ -190,21 +210,17 @@ header .menu-icon img {
 } */
 
 @media (min-width: 992px) {
-	header .container {
+	/* header .container {
 		width: 970px;
-	}
+	} */
 
-  header .sign input {
-    padding: 10px;
-  }
-
-  header .search {
+  /* header .search {
     width: 240px
-  }
+  } */
 }
 
 @media (min-width: 1200px) {
-	header .container {
+	/* header .container {
 		width: 1170px;
-	}
+	} */
 }

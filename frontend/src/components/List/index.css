@@ -1,3 +1,8 @@
+.list .search {
+  width: 100%;
+  text-align: center;
+}
+
 .list {
   position: fixed;
   top: 0;
@@ -10,6 +15,7 @@
   align-items: center;
   flex-direction: column; 
   background-color: var(--main-color);
+  opacity: .8;
   z-index: 1000;
 }
 
@@ -66,4 +72,16 @@
   background-color: transparent;
   font-weight: bold;
   font-size: 30px;
+}
+
+.list .log-out, .list .user {
+  border: none;
+  background-color: transparent;
+  font-weight: bold;
+  color: #fff;
+  font-size: 20px;
+}
+
+.list .user {
+  align-items: center;
 }

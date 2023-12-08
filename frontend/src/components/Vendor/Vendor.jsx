@@ -1,24 +1,34 @@
 import './index.css';
-// import Product from "../Product/Product";
+import Product from "../Product/Product";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 
 const Vendor = () => {
-  const products = [
-    { name: "laptop1", id: "15" },
-    { name: "laptop2" },
-    { name: "laptop3" },
-    { name: "laptop1", id: "15" },
 
 
-  ];
+  const [vendorProducts, setVendorProducts] = useState([]);
+
+  const getVendorProducts = () => {
+    axios
+      .get('http://localhost:8000/vendorProduct')
+      .then(res => {
+        console.log(res.data);
+        setVendorProducts(res.data);
+      })
+      .catch(error => { console.log(error) });
+  }
+  useEffect(() => {
+    getVendorProducts();
+  }, []);
+
   return (
     <>
       <div className='vendor'>
-        {/* <Product Allproduct={products}></Product> */}
+
+        <Product Allproduct={vendorProducts} IsVendor={true} />
       </div>
     </>
-
-
   );
 }
 
