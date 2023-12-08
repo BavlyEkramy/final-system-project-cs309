@@ -47,11 +47,11 @@ const Header = props => {
 							:
 							<>
 								<Link to={ROUTES.PROFILE}>
-									<div className='user flex-box'>
+									<div className='user'>
 										{
 											userData &&
 											<>
-												<Avatar alt='personal-image' src='images/personal_image.jpg' sx={{ width: 24, height: 24, mr: 1 }} />
+												<Avatar alt='personal-image' src='images/personal_image.jpg' sx={{ width: 26, height: 26, mr: 1 }} />
 												{/* {(userData.firstName != "" && userData.firstName) ? */}
 												{/* <span>{userData.firstName}</span> */}
 												<span>{userData.email.substring(0, userData.email.indexOf('@'))}</span>

@@ -112,8 +112,7 @@ header .sign a {
 
 header .sign .user {
   border: none;
-  padding: 8px;
-  flex-direction: column;
+  padding: 10px;
   height: 75px;
 }
 
@@ -171,9 +170,6 @@ header .menu-icon img {
 }
 
 @media (min-width: 768px) {
-	/* header .container {
-		width: 750px;
-	} */
 
 	header nav.flex-box, header .sign.flex-box {
 		display: flex;
@@ -193,36 +189,3 @@ header .menu-icon img {
   }
 }
 
-/* @media (max-width: 992px) {
-	body {
-		text-align: center;
-	}
-
-	.box {
-		width: 500px;
-	}
-
-	.social-media-links {
-		justify-content: center;
-	}
-
-	.home p {
-		font-size: 1.55em;
-	}
-} */
-
-@media (min-width: 992px) {
-	/* header .container {
-		width: 970px;
-	} */
-
-  /* header .search {
-    width: 240px
-  } */
-}
-
-@media (min-width: 1200px) {
-	/* header .container {
-		width: 1170px;
-	} */
-}
