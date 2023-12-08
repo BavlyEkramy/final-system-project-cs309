@@ -1,0 +1,85 @@
+.Profilo-section {
+    width: 80%;
+    height: auto;
+    margin: 12vh auto 5vh;
+    background-color: rgba(198, 208, 215,0.3);
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    box-shadow: 7px 7px 45px rgb(0, 0, 0,0.4);
+    padding: 30px 50px;
+}
+
+/* .container div {
+    margin-right: 30px;
+} */
+
+
+.Profilo-section img {
+    width: 210px;
+    height: 250px;
+    border-radius: 7px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#image {
+    filter: brightness(0.9);
+    position: relative;
+    width: 210px;
+    height: 250px;
+}
+
+.Profilo-section h2 {
+    color: rgb(122, 135, 148);
+    text-align: center;
+    margin-bottom: 30px;
+}
+.profile-info{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 30px;
+    font-size: 50px;
+}
+
+/* form {
+    width: 80%;
+    margin: 50px 0 20px;
+}
+
+label {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0px 20px 10px 5%;
+}
+
+input,
+.msg {
+    display: block;
+    /* width: ; */
+/* height: 30px;
+    margin: 10px 5% 10px 5%;
+    border-radius: 6px;
+    border: 0px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.msg {
+    height: 70px;
+    resize: none;
+    display: block;
+    margin: 10px 0px 0px 5%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    font-size: 16px;
+}
+
+*/
+
+.div {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}

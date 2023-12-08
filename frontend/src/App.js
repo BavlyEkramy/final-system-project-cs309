@@ -8,6 +8,7 @@ import Cart from './components/Cart/Cart';
 import Vendor from './components/Vendor/Vendor';
 import Signin from "./components/Signin/Signin";
 import Signup from "./components/Signup/Signup";
+import Profilo from './components/profilo/profilo';
 import Insertproducts from "./components/InsertProducts/Insertproducts";
 import UserContext from "./Services/UserContext";
 
@@ -110,7 +111,9 @@ const App = () => {
             <Route path={ROUTES.HOME} element={<><Header /><Home /></>} />
           </Route>
           
-          <Route path={ROUTES.CART} element={<> <Header /><Cart /></>} />
+          <Route path={ROUTES.CART} element={<> <Header /><Cart /> <Profilo/>
+          
+                    </>} />
           <Route path={ROUTES.VENDOR} element={<><Header /><Vendor /> <Product Allproduct={products} IsVendor="true"></Product> </>} />
           <Route path={ROUTES.SIGN_IN} element={<><Signin /></>} />
           <Route path={ROUTES.SIGN_UP} element={<><Signup /></>} />
