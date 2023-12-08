@@ -10,6 +10,7 @@ import Signin from "./components/Signin/Signin";
 import Signup from "./components/Signup/Signup";
 import Insertproducts from "./components/InsertProducts/Insertproducts";
 import UserContext from "./Services/UserContext";
+import ErrorPage from "./components/ErrorPage/ErrorPage";
 
 const App = () => {
   const [isLogin, setLogin] = useState(false);
@@ -111,12 +112,19 @@ const App = () => {
           </Route>
           
           <Route path={ROUTES.CART} element={<> <Header /><Cart /></>} />
-          <Route path={ROUTES.VENDOR} element={<><Header /><Vendor />  </>} />
+          <Route path={ROUTES.VENDOR} element={
+            <><Header />
+            {isLogin ? <Vendor /> : <ErrorPage msg="You must log in!" />}
+            </>
+            }
+          />
           <Route path={ROUTES.SIGN_IN} element={<><Signin /></>} />
           <Route path={ROUTES.SIGN_UP} element={<><Signup /></>} />
           <Route path={ROUTES.PRODUCTS} element={<><Header /><Product /></>} />
           Insertproducts
           <Route path={ROUTES.Insertproducts} element={<>< Insertproducts /></>} />
+          {/* <Route path={ROUTES.PROFILE} element={<><Header /><Profile /></>} /> */} {/* When profile is ready */}
+          <Route path='*' element={<><Header/><ErrorPage msg="This page is not found!" /></>} />
         </Routes>
       </Router>
     </UserContext.Provider>
