@@ -57,11 +57,11 @@ const Header = props => {
 							userData &&
               <>
 								<Avatar alt='personal-image' src='images/personal_image.jpg' />
-<<<<<<< HEAD
+
                 <span>{userData.firstName}</span>
-=======
+
                 <span>{userData.email.substring(0, userData.email.indexOf('@'))}</span>
->>>>>>> 7745af5e58b16a3353b6241e158918f117380445
+
               </>
 						}
 					</Link>

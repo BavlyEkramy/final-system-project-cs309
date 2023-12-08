@@ -5,10 +5,14 @@ const cors = require("cors");
 const bcrypt = require("bcrypt");
 
 // Require Moduls
+
 const Products = require("./moduls/products");
 const Users = require("./moduls/users");
+const Cards = require("./moduls/Card");
 const vendorProduct =require("./moduls/vendorProduct");
+
 const e = require("express");
+
 // Create server object
 const server = express();
 server.use(express.json());
@@ -299,25 +303,31 @@ server.post('/search' , cors() , async (req , res)=>{
 // 1 => return all products in card's user 
 
 server.post('/cards' , cors() , async (req , res)=>{
-    const UserId = req.body.id;
+    const UserId = req.body.userId;
+
+     let arr=[];
+       
     try{
-        const user = await Users.findById(UserId);
-        if(user == null){
-            res.json("user is not found");
-        }else{
-            const card = user.card;
-            if(card.length === 0){
-                res.json("Empity");
-            }else{
-            const products = [];
-            for(let i = 0 ; i < card.length ; i++){
-                const product = await Products.findById(card[i]);
-                products.push(product);
-            }
-            res.status(200).json(products);
-            }
+
+    
+        const userCards =await Cards.find({userId:UserId});
+        if(userCards===null){
+            res.json("This user haven't cards");
+        }
+        else{
+       for(let i=0;i<userCards.length;i++){
+         const prod=await Products.findById(userCards[i].productId);
+
+          arr.push(prod);
+       
+
+       }
+       res.status(200).json(arr);
     }
-    }catch(error){
+     
+
+    }
+    catch(error){
         res.status(400).json(error);
         console.log(error);
     }
@@ -352,25 +362,16 @@ server.delete('/deletecard' , cors() , async (req , res)=>{
 // 3 => add product to card's user
 
 server.post('/addcard' , cors() , async (req , res)=>{
-    const UserId = req.body.id;
-    const productId = req.body.productId;
+    const card = req.body;
     try {
-        const user = await Users.findById(UserId);
-        if(user == null){
-            res.json("user is not found");
-        }else{
-            user.card = user.card.push(productId);
-            await user.save();
-            res.status(200).json("Add To Card");  
-        }
-        
+        const newcard = await new Cards(card);
+        await newcard.save();
+        res.status(200).json("Add To Card");  
     } catch (error) {
         res.status(400).json(error);
         console.log(error);
     }
 });
-
-
 
 
 server.post('/vendorProduct' , cors() , async (req , res)=>{
@@ -511,7 +512,7 @@ server.post('/signup' , cors() , async(req , res)=>{
 
 //listen on Mongodb 
 mongoose.set("strictQuery", false);
-mongoose.connect('mongodb+srv://youssef01554600530:2127148@cluster0.etcx7ae.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect('mongodb://127.0.0.1:27017/Shop')
 .then(()=>{
     console.log('connected to MongoDB');
     // listen on specific port 
