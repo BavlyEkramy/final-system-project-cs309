@@ -14,7 +14,7 @@ const Vendor = () => {
     <>
       <div className='vendor'>
 
-        <Product Allproduct={products} IsVendor={true} />
+        <Product Allproduct={products} IsVendor={true} isCart={false}/>
       </div>
     </>
   );
