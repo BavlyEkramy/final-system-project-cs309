@@ -91,7 +91,7 @@ header .sign a {
   text-decoration: none;
 }
 
-header .sign input, header .sign .user {
+header .sign input, header .sign .user, header .sign a {
   border: 1px solid #fff;
   border-radius: 6px;
   font-weight: bold;
@@ -117,9 +117,9 @@ header .sign .user .MuiAvatar-icon {
   height: 10px
 }
 
-header .sign input:hover, header .sign .user a:hover {
+header .sign input:hover, header .sign a:hover {
   background-color: rgba(255, 255, 255, .3);
-  border: 1px solid #333;
+  
 }
 
 header .sign input, header .sign a {

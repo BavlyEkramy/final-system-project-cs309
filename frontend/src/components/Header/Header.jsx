@@ -1,7 +1,7 @@
 import './index.css';
 import List from '../List/List';
 import { useContext, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+
 
 import {Link} from "react-router-dom";
 import Search from '../Search/Search';
