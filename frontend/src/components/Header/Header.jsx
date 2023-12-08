@@ -30,8 +30,12 @@ const Header = props => {
 							<li><Link to="/cart">Cart </Link>
 								{/* number of items in cart */}
 								<Badge color="primary">
+
 									<ShoppingCartIcon />
 								</Badge>
+
+								{/* number of items in cart */}
+
 							</li>
 							<li><Link to={ROUTES.VENDOR}>Vendor</Link></li>
 						</ul>
