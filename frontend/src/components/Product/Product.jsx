@@ -35,7 +35,7 @@ const Product = (props) => {
         {
           !IsVendor ?
             Allproduct.map((p, i) => (
-              <Item product={p} key={i} />
+              <ProductItem product={p} key={i} />
             ))
             :
 

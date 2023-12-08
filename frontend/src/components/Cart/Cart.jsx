@@ -2,11 +2,9 @@ import './index.css';
 
 const Cart = () => {
   return (
-    <div>Cart</div>
-
-       
-
-
+    <div className='cart'>
+      {userProducts && <Product Allproduct={userProducts} IsVendor="false" />}
+    </div>
   );
 }
 
