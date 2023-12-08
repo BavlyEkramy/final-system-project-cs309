@@ -1,13 +1,13 @@
 import './index.css';
 import List from '../List/List';
 import { useContext, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { Link } from "react-router-dom";
+import { useLocation, useNavigate } from 'react-router-dom';
+import {Link} from "react-router-dom";
 import Search from '../Search/Search';
 import Badge from '@mui/material/Badge';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import UserContext from '../../Services/UserContext';
-import { Avatar } from '@mui/material';
+import { Avatar, Button } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import * as ROUTES from '../../constants/routes';
 
@@ -26,14 +26,15 @@ const Header = props => {
 						<ul>
 							<li><Link to={ROUTES.HOME}>Home</Link></li>
 							<li><Link to="/cart">Cart </Link>
-								<Badge badgeContent={4} color="primary">
+								{/* number of items in cart */}
+								<Badge badgeContent={4} color="primary"> 
 									<ShoppingCartIcon />
 								</Badge>
 							</li>
 							<li><Link to={ROUTES.VENDOR}>Vendor</Link></li>
 						</ul>
 					</nav>
-					<Search placeholder="Search" />
+					<Search placeholder="Search" sx={{  mr: 50 }} />
 					<div className='sign flex-box'>
 						{!isLogin ?
 							<Link to={ROUTES.SIGN_IN}>Sign in</Link>
@@ -44,8 +45,12 @@ const Header = props => {
 										{
 											userData &&
 											<>
-												<Avatar alt='personal-image' src='images/personal_image.jpg' sx={{ width: 24, height: 24 ,mr:1}} />
-												<span> {userData.firstName}</span>
+												<Avatar alt='personal-image' src='images/personal_image.jpg' sx={{ width: 24, height: 24, mr: 1 }} />
+												{(userData.firstName != "" && userData.firstName) ?
+													<span>{userData.firstName}</span>
+													:
+												<span>{userData.email.substring(0, userData.email.indexOf('@'))}</span>
+												}
 											</>
 										}
 									</div>
@@ -65,6 +70,8 @@ const Header = props => {
 			{showMenu && <List show={setShowMenu} />}
 		</>
 	);
+
+
 };
 
 export default Header;

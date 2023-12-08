@@ -11,11 +11,11 @@ import Signup from "./components/Signup/Signup";
 import Profilo from './components/profilo/profilo';
 import Insertproducts from "./components/InsertProducts/Insertproducts";
 import UserContext from "./Services/UserContext";
+import ErrorPage from "./components/ErrorPage/ErrorPage";
 
 const App = () => {
   const [isLogin, setLogin] = useState(false);
   const [userData, setUserData] = useState(null);
-
   const userLogin = { isLogin, setLogin, userData, setUserData };
 
   const products = [{
@@ -99,25 +99,31 @@ const App = () => {
       "./prouducts_photo/Laptops/Lenovo Legion 5 Pro/5.png"],
     stars: "3.9",
   }]
-
-
-
   return (
     <UserContext.Provider value={userLogin}>
       <Router>
         <Routes>
-          <Route path={ROUTES.LANDING} element={<><Header /><Home />    <Product Allproduct={products}></Product> </>}>
+          <Route path={ROUTES.LANDING} element={<><Header /><Home /> <Product Allproduct={products}></Product> </>}>
             <Route path={ROUTES.HOME} element={<><Header /><Home /></>} />
           </Route>
           <Route path={ROUTES.CART} element={<> <Header /><Cart /></>} />
-          <Route path={ROUTES.VENDOR} element={<><Header /><Vendor />  </>} />
+          <Route path={ROUTES.VENDOR} element={
+            <><Header />
+              {/* {
+               setTimeout(() => {
+              window.open("http://localhost:3000/signin", "_self", "width=500, height=600");
+            }, 3000)} */}
+              {isLogin ? <Vendor />: <ErrorPage msg="You must log in!" />}
+            </>
+            }
+          />
           <Route path={ROUTES.SIGN_IN} element={<><Signin /></>} />
           <Route path={ROUTES.SIGN_UP} element={<><Signup /></>} />
           <Route path={ROUTES.PRODUCTS} element={<><Header /><Product /></>} />
           <Route path={ROUTES.PROFILE} element={<><Header /> <Profilo /></>} />
-
           Insertproducts
           <Route path={ROUTES.Insertproducts} element={<>< Insertproducts /></>} />
+          <Route path='*' element={<><Header/><ErrorPage msg="This page is not found!" /></>} />
         </Routes>
       </Router>
     </UserContext.Provider>

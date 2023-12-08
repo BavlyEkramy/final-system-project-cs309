@@ -28,7 +28,7 @@ const List = props => {
                 userData &&
                 <>
                   <Avatar alt='personal-image' src='images/personal_image.jpg' />
-                  <span>{userData.email}</span>
+                  <span>{userData.email.substring(0, userData.email.indexOf('@'))}</span>
                 </>
               }
               </div>

@@ -20,19 +20,22 @@ import InputLabel from '@mui/material/InputLabel';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import React from "react";
 import './index.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import UserContext from '../../Services/UserContext';
 
 
 
 const Profilo = (props) => {
-
+    const { isLogin, setLogin, userData, setUserData } = useContext(UserContext);
+    console.log(userData.id)
+    
     return (
         <>
             <div className="Profilo-section">
                 <h2>Profile</h2>
                 <div className="div">
                     <div id="image">
-                        <img src="./prouducts_photo/Laptops/Lenovo Legion 5 Pro/1.png" alt="bavly" />
+                        <img src="images/personal_image.jpg" alt={userData.firstName} />
                         <Button variant="contained" disableElevation >Edit Profile </Button>
                     </div>
                     {/* <div> */}
@@ -43,7 +46,7 @@ const Profilo = (props) => {
                             focused
                             id="outlined-read-only-input"
                             label="First name"
-                            defaultValue="Bavly"
+                            defaultValue={userData.firstName}
                             InputProps={{
                                 readOnly: true,
                             }}
@@ -53,7 +56,7 @@ const Profilo = (props) => {
                             focused
                             id="outlined-read-only-input"
                             label="ID"
-                            defaultValue="30684522"
+                            defaultValue={userData.phone}
                             InputProps={{
                                 readOnly: true,
                             }}
@@ -62,7 +65,7 @@ const Profilo = (props) => {
                             focused
                             id="outlined-read-only-input"
                             label="Email"
-                            defaultValue="Hello World"
+                            defaultValue={userData.email}
                             InputProps={{
                                 readOnly: true,
                             }}
@@ -71,7 +74,7 @@ const Profilo = (props) => {
                             focused
                             id="outlined-read-only-input"
                             label="Phone"
-                            defaultValue="010859851"
+                            defaultValue={userData.phone}
                             InputProps={{
                                 readOnly: true,
                             }}
@@ -80,7 +83,7 @@ const Profilo = (props) => {
                             focused
                             id="outlined-read-only-input"
                             label="Adress"
-                            defaultValue="2 ST A7mad Zaki"
+                            defaultValue={userData.adress}
                             InputProps={{
                                 readOnly: true,
                             }}
@@ -89,7 +92,7 @@ const Profilo = (props) => {
                             focused
                             id="outlined-read-only-input"
                             label="Age"
-                            defaultValue="23"
+                            defaultValue={userData.Age}
                             InputProps={{
                                 readOnly: true,
                             }}

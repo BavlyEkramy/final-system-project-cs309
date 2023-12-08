@@ -12,7 +12,8 @@
 .Profilo-section img {
     width: 210px;
     height: 250px;
-    border-radius: 7px;
+    border-radius: 15px;
+    margin-bottom: 5px;
 
 }
 
