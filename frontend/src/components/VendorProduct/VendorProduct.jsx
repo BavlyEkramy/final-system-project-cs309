@@ -20,6 +20,13 @@ import { useState, useEffect } from 'react';
 
 const Product = (props) => {
 
+    function EditProduct() {
+        console.log("EditProduct")
+    }
+    function RemoveProduct() {
+        console.log("RemoveProduct")
+    }
+
     const { product  } = props;
     useEffect(() => {
         let heart_icon = document.querySelectorAll(".help")
@@ -53,6 +60,7 @@ const Product = (props) => {
                         </div>
                     <div className="vendor-btns">
                         <Button
+                            onClick={EditProduct}
                             color="primary"
                             // disabled={false}
                             // size="large"
@@ -62,7 +70,7 @@ const Product = (props) => {
                             Edit
                         </Button>
                         <Button
-                            // type="submit"
+                            onClick={RemoveProduct}
                             variant="contained"
                             color="error"
                             sx={{ m: 2, ml: 1 }}

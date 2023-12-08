@@ -37,7 +37,7 @@
 .info-div {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 5px;
+    gap: 25px;
 
 }
 
@@ -72,7 +72,6 @@
     }
 
     .vendor-Add h1 {
-        color: rgb(122, 135, 148);
         font-size: 20px;
     }
 

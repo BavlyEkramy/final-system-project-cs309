@@ -26,7 +26,6 @@ const Home = () => {
     <>
     <div className="home">
       <Product Allproduct={products} IsVendor={false} />
-      {/* {products[0].images[0]} */}
     </div>
     </>
   );
