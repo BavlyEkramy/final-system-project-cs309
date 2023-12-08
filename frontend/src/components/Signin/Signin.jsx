@@ -41,28 +41,26 @@ export default function SignIn() {
     email:null,
     password:null,
   };
-  const signin = false;
   const a = false;
-
   const  handelSubmit = async(e) =>{
     e.preventDefault();
-    const checkEmail = /\w+@(gmail|yahoo|outlook).(com|net)/;
-    if(dataInfo.email.match(checkEmail)){
+    
         try {
             await axios.post("http://localhost:8000/login" , dataInfo)
             .then( res =>{
-                setLogin(true);
-                setUserData(res.data);
-
+                console.log(res.data);
+             
                 if(res.data === "Email Dose Not Exist" || res.data === "Email or Password is not correct"){
+                  
+                 
                     const p = document.createElement('p');
                     p.textContent = res.data;
-                    const signinForm = document.querySelector('.MuiBox-root');
-                    signinForm.appendChild(p);
-                    setLogin(false);
-                    setUserData({});
+                    const Signin = document.getElementsByClassName('Signin')[0];
+                    Signin.appendChild(p); 
                 }else{
                     history('/home');
+                    setLogin(true);
+                    setUserData(res.data);
                 }
             }).catch(error=>{
                 console.log(error);
@@ -75,9 +73,6 @@ export default function SignIn() {
             console.log(a);
             
         }
-      }else{
-        alert("Email is not valid")
-      }
   }
   const handleChange = (event) => {
     event.preventDefault();
@@ -87,9 +82,10 @@ export default function SignIn() {
       email: data.get('email'),
       password: data.get('password'),
     };
-    
+
     dataInfo.email = dataChange.email;
     dataInfo.password = dataChange.password;
+
   };
 
   return (
