@@ -20,6 +20,8 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import { useState } from 'react';
+
 
 function Copyright(props) {
   return (
@@ -41,6 +43,7 @@ const defaultTheme = createTheme();
 export default function SignUp() {
     const {isLogin, setLogin, userData, setUserData} = React.useContext(UserContext);
     const history= useNavigate();
+    const [value , setSex] = useState('');
 
     const dataInfo={ 
         firstName:null,
@@ -50,25 +53,29 @@ export default function SignUp() {
       adress:null,
       phone:null,
       Age:null,
-      Sex:null,
+      Sex:value,
       national:null
     }
     let signup = false;
-    const p = document.createElement('p');
-    const Signup = document.getElementsByClassName('Signup')[0];
+    
     const handleSubmit= async(event)=>{
       event.preventDefault();
       if(signup){
         try {
             await axios.post("http://localhost:8000/signup" ,dataInfo )
             .then(res =>{
+                setLogin(true);
+                setUserData((res.data));
+
                 if(res.data === "Email is already Exist"){
+                  const p = document.createElement('p');
                   p.textContent = res.data;
-                  Signup.appendChild(p); 
+                  const signupForm = document.querySelector('.MuiBox-root');
+                  signupForm.appendChild(p);
+                  setLogin(false);
+                  setUserData({});
                 }else{
-                    history('/home');
-                    setLogin(true);
-                    setUserData((res.data));
+                    history('/home');    
                 }
             }).catch(error => {
                 console.log(error);
@@ -94,10 +101,10 @@ export default function SignUp() {
       adress:data.get('Address'),
       phone:data.get('Phone'),
       Age:data.get('Age'),
-      Sex:data.get('Sex'),
       national:data.get('National'),
       
     }
+    
     const checkEmail = /\w+@(gmail|yahoo|outlook).(com|net)/;
     if(d.email.match(checkEmail)){
       if((d.password).length >= 8){
@@ -109,7 +116,6 @@ export default function SignUp() {
         dataInfo.adress=d.adress;
         dataInfo.phone=d.phone;
         dataInfo.Age=d.Age;
-        dataInfo.Sex=d.Sex;
         dataInfo.national=d.national;
         signup = true;
         }else{
@@ -119,7 +125,6 @@ export default function SignUp() {
       console.log("Password is not strong must be 8 cracter or more");
     }
   }else{
-    console.log(d.Sex);
     console.log("Email is not valid")
   }
   };
@@ -238,6 +243,8 @@ export default function SignUp() {
                       aria-labelledby="demo-radio-buttons-group-label"
                       defaultValue="male"
                       name="radio-buttons-group"
+                      value={value}
+                      onChange={(e)=> setSex(e.target.value)}
                     >
                       <FormControlLabel value="female" control={<Radio />} label="Female" />
                       <FormControlLabel value="male" control={<Radio />} label="Male" />

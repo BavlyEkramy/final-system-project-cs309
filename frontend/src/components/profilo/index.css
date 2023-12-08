@@ -1,0 +1,46 @@
+.Profilo-section {
+    width: 80%;
+    height: auto;
+    margin: 12vh auto 5vh;
+    background-color: rgba(198, 208, 215,0.3);
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    box-shadow: 7px 7px 45px rgb(0, 0, 0,0.4);
+    padding: 30px 50px;
+}
+
+.Profilo-section img {
+    width: 210px;
+    height: 250px;
+    border-radius: 15px;
+    margin-bottom: 5px;
+
+}
+
+#image {
+    filter: brightness(0.9);
+    width: 210px;
+    height: 250px;
+    text-align: center;
+}
+
+.Profilo-section h2 {
+    color: rgb(122, 135, 148);
+    text-align: center;
+    margin-bottom: 30px;
+}
+.profile-info{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 30px;
+    font-size: 50px;
+}
+
+.div {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}
+/* Button{
+    margin: auto;
+} */

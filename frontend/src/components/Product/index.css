@@ -57,6 +57,11 @@ transform: scale(1.09);
     font-size: 20px;
 }
 
+.product-item .d_col i {
+    font-size: 18px;
+    margin: 2px;
+}
+
 .product-item .d_col {
     display: flex;
     flex-direction: row;

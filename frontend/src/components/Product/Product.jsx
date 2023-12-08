@@ -2,11 +2,9 @@
 import React from "react";
 import './index.css';
 import { useEffect } from 'react';
-import Item from "../Product/item";
+import Item from "./item";
 import VendorProduct from "../VendorProduct/VendorProduct";
 import AddItem from "../VendorProduct/AddItem";
-
-import { Button } from "@mui/material";
 
 
 const Product = (props) => {
@@ -23,22 +21,20 @@ const Product = (props) => {
     })
   })
 
-  // console.log(Allproduct)
+  console.log(Allproduct)
   return (
     <>
       <div id="product-container">
         {
-          IsVendor &&  
-          <AddItem/>
+          IsVendor &&
+          <AddItem />
         }
-
         {
           !IsVendor ?
             Allproduct.map((p, i) => (
               <Item product={p} key={i} />
             ))
             :
-
             Allproduct.map((p, i) => (
               <VendorProduct product={p} key={i} />
             ))
