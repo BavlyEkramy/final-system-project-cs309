@@ -48,7 +48,6 @@ const Header = props => {
 												<Avatar alt='personal-image' src='images/personal_image.jpg' sx={{ width: 24, height: 24, mr: 1 }} />
 												{/* {(userData.firstName != "" && userData.firstName) ? */}
 												{/* <span>{userData.firstName}</span> */}
-												:
 												<span>{userData.email.substring(0, userData.email.indexOf('@'))}</span>
 											</>
 										}
