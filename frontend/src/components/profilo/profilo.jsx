@@ -27,77 +27,139 @@ import UserContext from '../../Services/UserContext';
 
 const Profilo = (props) => {
     const { isLogin, setLogin, userData, setUserData } = useContext(UserContext);
-    console.log(userData.id)
-    
+
+    const [EditProfile, SetEditProfile] = useState(false)
+
+    function Edit() {
+        SetEditProfile(!EditProfile);
+        if (!EditProfile)
+            document.querySelector('.Profilo-section').style.boxShadow = "7px 7px 45px rgba(0, 0, 0, 0.4)"
+        else document.querySelector('.Profilo-section').style.boxShadow = "7px 7px 45px rgba(51, 102, 212, 0.4)"
+    }
+
     return (
         <>
             <div className="Profilo-section">
                 <h2>Profile</h2>
                 <div className="div">
                     <div id="image">
-                        <img src="images/personal_image.jpg" alt={userData.firstName} />
-                        <Button variant="contained" disableElevation >Edit Profile </Button>
+                        <img src="images/personal_image.jpg" alt={userData.firstName ? userData.firstName :""} />
+                        {EditProfile && <input type="file" id="avatar"  accept="image/png, image/jpeg" />}
+                            <Button variant="contained" disableElevation onClick={Edit}>{ EditProfile ? 'Edit Profile' : 'Submit Edit' } </Button>
+                        
                     </div>
                     {/* <div> */}
                     <Box className='profile-info' sx={{
                         '& > :not(style)': { m: 1, width: '250px' },
                     }} >
-                        <TextField
-                            focused
-                            id="outlined-read-only-input"
-                            label="First name"
-                            defaultValue={userData.firstName}
-                            InputProps={{
-                                readOnly: true,
-                            }}
 
-                        />
-                        <TextField
-                            focused
-                            id="outlined-read-only-input"
-                            label="ID"
-                            defaultValue={userData.phone}
-                            InputProps={{
-                                readOnly: true,
-                            }}
-                        />
-                        <TextField
-                            focused
-                            id="outlined-read-only-input"
-                            label="Email"
-                            defaultValue={userData.email}
-                            InputProps={{
-                                readOnly: true,
-                            }}
-                        />
-                        <TextField
-                            focused
-                            id="outlined-read-only-input"
-                            label="Phone"
-                            defaultValue={userData.phone}
-                            InputProps={{
-                                readOnly: true,
-                            }}
-                        />
-                        <TextField
-                            focused
-                            id="outlined-read-only-input"
-                            label="Adress"
-                            defaultValue={userData.adress}
-                            InputProps={{
-                                readOnly: true,
-                            }}
-                        />
-                        <TextField
-                            focused
-                            id="outlined-read-only-input"
-                            label="Age"
-                            defaultValue={userData.Age}
-                            InputProps={{
-                                readOnly: true,
-                            }}
-                        />
-                        {/* </div> */}
+                        {EditProfile ?
+                            <>
+                                <TextField
+                                    focused
+                                    id="outlined-read-only-input"
+                                    label="First name"
+                                    defaultValue={userData.firstName}
+
+                                />
+                                <TextField
+                                    focused
+                                    id="outlined-read-only-input"
+                                    label="ID"
+                                    defaultValue="--"
+                                />
+                                <TextField
+                                    focused
+                                    id="outlined-read-only-input"
+                                    label="Email"
+                                    defaultValue={userData.email}
+                                />
+                                <TextField
+                                    focused
+                                    id="outlined-read-only-input"
+                                    label="Phone"
+                                    defaultValue={userData.phone}
+
+                                />
+                                <TextField
+                                    focused
+                                    id="outlined-read-only-input"
+                                    label="Adress"
+                                    defaultValue={userData.adress}
+
+                                />
+                                <TextField
+                                    focused
+                                    id="outlined-read-only-input"
+                                    label="Age"
+                                    defaultValue={userData.Age}
+
+                                />
+                            </>
+
+                            :
+
+                            <>
+                                <TextField
+                                    // focused
+
+                                    id="outlined-read-only-input"
+                                    label="First name"
+                                    defaultValue={userData.firstName}
+                                    InputProps={{
+                                        readOnly: true,
+                                    }}
+
+                                />
+                                <TextField
+                                    // focused
+                                    id="outlined-read-only-input"
+                                    label="ID"
+                                    defaultValue="--"
+                                    InputProps={{
+                                        readOnly: true,
+                                    }}
+                                />
+                                <TextField
+                                    // focused
+                                    id="outlined-read-only-input"
+                                    label="Email"
+                                    defaultValue={userData.email}
+                                    InputProps={{
+                                        readOnly: true,
+                                    }}
+                                />
+                                <TextField
+                                    // focused
+                                    id="outlined-read-only-input"
+                                    label="Phone"
+                                    defaultValue={userData.phone}
+                                    InputProps={{
+                                        readOnly: true,
+                                    }}
+                                />
+                                <TextField
+                                    // focused
+                                    id="outlined-read-only-input"
+                                    label="Adress"
+                                    defaultValue={userData.adress}
+                                    InputProps={{
+                                        readOnly: true,
+                                    }}
+                                />
+                                <TextField
+                                    // focused
+                                    id="outlined-read-only-input"
+                                    label="Age"
+                                    defaultValue={userData.Age}
+                                    InputProps={{
+                                        readOnly: true,
+                                    }} />
+
+                            </>
+                        }
+
+
                     </Box>
                 </div>
             </div>

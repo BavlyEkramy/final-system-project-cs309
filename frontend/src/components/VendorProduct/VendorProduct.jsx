@@ -18,7 +18,7 @@ import { useState, useEffect } from 'react';
 
 
 
-const Product = (props) => {
+const VendorProduct = (props) => {
 
     function EditProduct() {
         console.log("EditProduct")
@@ -83,4 +83,4 @@ const Product = (props) => {
     );
 };
 
-export default Product;
+export default VendorProduct;

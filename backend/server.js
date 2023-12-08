@@ -316,7 +316,7 @@ server.post('/cards' , cors() , async (req , res)=>{
         }
         else{
        for(let i=0;i<userCards.length;i++){
-         const prod=await Products.findById(userCards[i].productId);
+         const prod=await vendorProduct.findById(userCards[i].productId);
 
           arr.push(prod);
        

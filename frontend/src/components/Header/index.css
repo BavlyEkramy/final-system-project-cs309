@@ -1,5 +1,5 @@
 :root {
-  --header-opacity: .8;
+  --header-opacity: .7;
 }
 
 header {
@@ -11,7 +11,7 @@ header {
 	position: fixed;
 	z-index: 999;
 	text-transform: uppercase;
-	border-bottom: 3px solid #f7f7f7;
+	/* border-bottom: 3px solid #f7f7f7;   */
   overflow: hidden;
 }
 
@@ -29,7 +29,8 @@ header .logo {
 	cursor: pointer;
   position: relative;
   opacity: var(--header-opacity);
-  height: 90px;
+  height: 70px;
+  width: 100px;
 }
 
 header .logo img {
@@ -40,6 +41,7 @@ header .logo img {
   right: 0;
   width: 100%;
   height: 100%;
+  border-radius:45px ;
 }
 
 header nav {
