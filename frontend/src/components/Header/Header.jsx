@@ -1,7 +1,7 @@
 import './index.css';
 import List from '../List/List';
 import { useContext, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import {Link} from "react-router-dom";
 import Search from '../Search/Search';
@@ -52,16 +52,18 @@ const Header = props => {
 					
 					:
 					<>
-					<Link to={ROUTES.PROFILE}>
-						<div className='user flex-box'>
+					<Link to='/profile' className='user flex-box'>
 						{
 							userData &&
               <>
 								<Avatar alt='personal-image' src='images/personal_image.jpg' />
+<<<<<<< HEAD
                 <span>{userData.firstName}</span>
+=======
+                <span>{userData.email.substring(0, userData.email.indexOf('@'))}</span>
+>>>>>>> 7745af5e58b16a3353b6241e158918f117380445
               </>
 						}
-						</div>
 					</Link>
 					<input type='button' value='log out' onClick={()=> {
 						setLogin(false);
