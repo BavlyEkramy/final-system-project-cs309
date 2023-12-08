@@ -7,10 +7,8 @@ const bcrypt = require("bcrypt");
 // Require Moduls
 const Products = require("./moduls/products");
 const Users = require("./moduls/users");
-const Cards = require("./moduls/basket");
-const Buy = require("./moduls/buy");
-const Vendor =require("./moduls/vendor");
-const vendorProduct =require("./moduls/vendorProduct")
+const vendorProduct =require("./moduls/vendorProduct");
+const e = require("express");
 // Create server object
 const server = express();
 server.use(express.json());
@@ -250,45 +248,21 @@ const products = [
 
 // 1 => return all products
 
-server.delete('/d' , cors() , async (req , res)=>{
-    try {
-        await Products.deleteMany({});
-        
-    } catch (error) {
-        console.log(error)
-    }
-      
-})
-
-
-
 server.get('/' , cors() , async (req , res)=>{
-    
     try {
         for(let i =0; i<products.length;i++){
-
           const find = await Products.findOne({model:products[i].model});
-        
           if(!find){
             const pro = await new Products(products[i]); 
             await pro.save();
-           
           }
-
         }
-        
-
         const proAll= await Products.find({});
         res.status(200).json(proAll);
-        
     } catch (error) {
         res.status(400).send(error)
         console.log(error)
     }
-
-    
-    
-    
 });
 
 // 2 => return products by type
@@ -300,35 +274,21 @@ server.get('/getbytype' , cors() , async (req , res)=>{
 // 3 => return products by model
 
 server.post('/search' , cors() , async (req , res)=>{
-
      const model =req.body.model;
-
-     
         const array=[];
      try {
-       
-         
       const pro = await Products.find();
       for(let i =0; i<pro.length;i++){
-        if(model.toUpperCase()===(pro[i].model).slice(0,model.length)){
-            
+        if(model.toUpperCase()===(pro[i].model).slice(0,model.length)){  
              array.push(pro[i]);
         }
       }
       res.status(200).json(array);
-        
         }
-        
-
-        
      catch (error) {
         res.status(400).send(error)
         console.log(error)
     }
-
-     
-       
-
 });
 
 
@@ -338,14 +298,25 @@ server.post('/search' , cors() , async (req , res)=>{
 
 // 1 => return all products in card's user 
 
-server.get('/cards' , cors() , async (req , res)=>{
+server.post('/cards' , cors() , async (req , res)=>{
+    const UserId = req.body.id;
     try{
-        const cards = await Cards.find({});
-        if(cards == null){
-            res.status(400).json("Empity");
+        const user = await Users.findById(UserId);
+        if(user == null){
+            res.json("user is not found");
         }else{
-            res.status(200).json(cards);
-        }
+            const card = user.card;
+            if(card.length === 0){
+                res.json("Empity");
+            }else{
+            const products = [];
+            for(let i = 0 ; i < card.length ; i++){
+                const product = await Products.findById(card[i]);
+                products.push(product);
+            }
+            res.status(200).json(products);
+            }
+    }
     }catch(error){
         res.status(400).json(error);
         console.log(error);
@@ -355,13 +326,22 @@ server.get('/cards' , cors() , async (req , res)=>{
 // 2 => delete product from card 
 
 server.delete('/deletecard' , cors() , async (req , res)=>{
-    const cardid = req.body.id;
+    const UserId = req.body.Userid;
+    const productId = req.body.productId; 
     try {
-        const deletecard = await Cards.findByIdAndDelete(cardid);
-        if(deletecard){
-            res.status(200).json(deletecard);
+        const user = await Users.findById(UserId);
+        if(user == null){
+            res.json("user is not found");
         }else{
-            res.status(404).json("Not Found");
+            const card = user.card;
+            if(card.length === 0){
+                res.json("Empity");
+            }else{
+                const product = card.filter((e)=> e != productId);
+                user.card = product;
+                await user.save();
+                res.status(200).json(product);
+            }
         }
     } catch (error) {
         res.status(400).json(error);
@@ -372,11 +352,18 @@ server.delete('/deletecard' , cors() , async (req , res)=>{
 // 3 => add product to card's user
 
 server.post('/addcard' , cors() , async (req , res)=>{
-    const card = req.body;
+    const UserId = req.body.id;
+    const productId = req.body.productId;
     try {
-        const newcard = await new Cards(card);
-        await newcard.save();
-        res.status(200).json("Add To Card");  
+        const user = await Users.findById(UserId);
+        if(user == null){
+            res.json("user is not found");
+        }else{
+            user.card = user.card.push(productId);
+            await user.save();
+            res.status(200).json("Add To Card");  
+        }
+        
     } catch (error) {
         res.status(400).json(error);
         console.log(error);
@@ -386,12 +373,10 @@ server.post('/addcard' , cors() , async (req , res)=>{
 
 
 
-server.get('/vendorProduct' , cors() , async (req , res)=>{
-    
+server.post('/vendorProduct' , cors() , async (req , res)=>{
     try{
         const prod = await vendorProduct.find({});
         console.log(prod);
-
         if(prod.length===0){
             res.json("Empity");
         }else{
@@ -506,7 +491,7 @@ server.post('/signup' , cors() , async(req , res)=>{
         const finduser = await Users.findOne({email:newuser.email});
         
         if(finduser != null){
-            res.json("Email is Oready Exist");
+            res.json("Email is already Exist");
         }else{
            const user = await new Users(newuser);
            user.password = await bcrypt.hash(user.password , 10);
@@ -526,7 +511,7 @@ server.post('/signup' , cors() , async(req , res)=>{
 
 //listen on Mongodb 
 mongoose.set("strictQuery", false);
-mongoose.connect('mongodb://127.0.0.1:27017')
+mongoose.connect('mongodb+srv://youssef01554600530:2127148@cluster0.etcx7ae.mongodb.net/?retryWrites=true&w=majority')
 .then(()=>{
     console.log('connected to MongoDB');
     // listen on specific port 

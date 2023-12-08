@@ -58,7 +58,7 @@ const Header = props => {
 							userData &&
               <>
 								<Avatar alt='personal-image' src='images/personal_image.jpg' />
-                <span>{userData.email}</span>
+                <span>{userData.firstName}</span>
               </>
 						}
 						</div>
