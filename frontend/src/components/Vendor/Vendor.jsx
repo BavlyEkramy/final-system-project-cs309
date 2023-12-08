@@ -115,7 +115,7 @@ const Vendor = () => {
   return (
     <>
       <div className='vendor'>
-        <Product Allproduct={vendorProducts} IsVendor="true"></Product>
+        <Product Allproduct={vendorProducts} IsVendor={true} />
       </div>
     </>
 

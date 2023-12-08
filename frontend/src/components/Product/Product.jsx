@@ -2,7 +2,7 @@
 import React from "react";
 import './index.css';
 import { useEffect } from 'react';
-import Item from "../Product/item";
+import Item from "../Product/Item";
 import VendorProduct from "../VendorProduct/VendorProduct";
 import AddItem from "../VendorProduct/AddItem";
 
@@ -23,7 +23,7 @@ const Product = (props) => {
     })
   })
 
-  // console.log(Allproduct)
+  console.log(Allproduct)
   return (
     <>
       <div id="product-container">
