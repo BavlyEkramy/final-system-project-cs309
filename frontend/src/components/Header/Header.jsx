@@ -7,6 +7,9 @@ import Search from '../Search/Search';
 import Badge from '@mui/material/Badge';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import UserContext from '../../Services/UserContext';
+import { Avatar } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import * as ROUTES from '../../constants/routes';
 
 
 const Header = props => {
@@ -21,22 +24,32 @@ const Header = props => {
 					</div>
 					<nav className="flex-box">
 						<ul>
-							<li><Link to="/home">Home</Link></li>
+							<li><Link to={ROUTES.HOME}>Home</Link></li>
 							<li><Link to="/cart">Cart </Link>
 								<Badge badgeContent={4} color="primary">
 									<ShoppingCartIcon />
 								</Badge>
 							</li>
-							<li><Link to="/vendor">Vendor</Link></li>
+							<li><Link to={ROUTES.VENDOR}>Vendor</Link></li>
 						</ul>
 					</nav>
-					<Search placeholder="Search for products" />
+					<Search placeholder="Search" />
 					<div className='sign flex-box'>
 						{!isLogin ?
-							<Link to='/signin'>Sign in</Link>
+							<Link to={ROUTES.SIGN_IN}>Sign in</Link>
 							:
 							<>
-								<div className='username'>{userData ? userData.email : "Name"}</div>
+								<Link to={ROUTES.PROFILE}>
+									<div className='user flex-box'>
+										{
+											userData &&
+											<>
+												<Avatar alt='personal-image' src='images/personal_image.jpg' sx={{ width: 24, height: 24 ,mr:1}} />
+												<span> {userData.firstName}</span>
+											</>
+										}
+									</div>
+								</Link>
 								<input type='button' value='log out' onClick={() => {
 									setLogin(false);
 									setUserData(null);
@@ -44,8 +57,8 @@ const Header = props => {
 							</>
 						}
 					</div>
-					<div className="menu-icon">
-						<img src='images/burger-icon.jpg' onClick={() => { setShowMenu(true) }} />
+					<div className="menu-icon" onClick={() => { setShowMenu(true) }}>
+						<MenuIcon />
 					</div>
 				</div>
 			</header>

@@ -9,25 +9,18 @@
     padding: 30px 50px;
 }
 
-/* .container div {
-    margin-right: 30px;
-} */
-
-
 .Profilo-section img {
     width: 210px;
     height: 250px;
     border-radius: 7px;
-    position: absolute;
-    top: 0;
-    left: 0;
+
 }
 
 #image {
     filter: brightness(0.9);
-    position: relative;
     width: 210px;
     height: 250px;
+    text-align: center;
 }
 
 .Profilo-section h2 {
@@ -42,44 +35,11 @@
     font-size: 50px;
 }
 
-/* form {
-    width: 80%;
-    margin: 50px 0 20px;
-}
-
-label {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 0px 20px 10px 5%;
-}
-
-input,
-.msg {
-    display: block;
-    /* width: ; */
-/* height: 30px;
-    margin: 10px 5% 10px 5%;
-    border-radius: 6px;
-    border: 0px;
-    font-size: 20px;
-    font-weight: bold;
-    padding: 5px;
-}
-
-.msg {
-    height: 70px;
-    resize: none;
-    display: block;
-    margin: 10px 0px 0px 5%;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    font-size: 16px;
-}
-
-*/
-
 .div {
     display: flex;
     justify-content: space-between;
     flex-direction: row-reverse;
 }
+/* Button{
+    margin: auto;
+} */

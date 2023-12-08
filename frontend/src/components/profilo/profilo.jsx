@@ -33,21 +33,24 @@ const Profilo = (props) => {
                 <div className="div">
                     <div id="image">
                         <img src="./prouducts_photo/Laptops/Lenovo Legion 5 Pro/1.png" alt="bavly" />
-                        {/* <button>Edidfbgbcvct</button> */}
+                        <Button variant="contained" disableElevation >Edit Profile </Button>
                     </div>
                     {/* <div> */}
-                    <div className='profile-info' >
+                    <Box className='profile-info' sx={{
+                        '& > :not(style)': { m: 1, width: '250px' },
+                    }} >
                         <TextField
-                            disabled
+                            focused
                             id="outlined-read-only-input"
                             label="First name"
                             defaultValue="Bavly"
                             InputProps={{
                                 readOnly: true,
                             }}
+
                         />
                         <TextField
-                            disabled
+                            focused
                             id="outlined-read-only-input"
                             label="ID"
                             defaultValue="30684522"
@@ -55,11 +58,8 @@ const Profilo = (props) => {
                                 readOnly: true,
                             }}
                         />
-                        {/* </div>
-
-                        <div className='infoProduct'> */}
                         <TextField
-                            disabled
+                            focused
                             id="outlined-read-only-input"
                             label="Email"
                             defaultValue="Hello World"
@@ -68,7 +68,7 @@ const Profilo = (props) => {
                             }}
                         />
                         <TextField
-                            disabled
+                            focused
                             id="outlined-read-only-input"
                             label="Phone"
                             defaultValue="010859851"
@@ -76,8 +76,26 @@ const Profilo = (props) => {
                                 readOnly: true,
                             }}
                         />
+                        <TextField
+                            focused
+                            id="outlined-read-only-input"
+                            label="Adress"
+                            defaultValue="2 ST A7mad Zaki"
+                            InputProps={{
+                                readOnly: true,
+                            }}
+                        />
+                        <TextField
+                            focused
+                            id="outlined-read-only-input"
+                            label="Age"
+                            defaultValue="23"
+                            InputProps={{
+                                readOnly: true,
+                            }}
+                        />
                         {/* </div> */}
-                    </div>
+                    </Box>
                 </div>
             </div>
 
