@@ -15,6 +15,10 @@ header {
   overflow: hidden;
 }
 
+header .container {
+  width: 80%;
+}
+
 header .flex-box {
 	justify-content: space-between;
   align-items: center;
@@ -87,7 +91,7 @@ header .sign a {
   text-decoration: none;
 }
 
-header .sign input, header .sign a, header .sign .user {
+header .sign input, header .sign .user {
   border: 1px solid #fff;
   border-radius: 6px;
   font-weight: bold;
@@ -103,10 +107,9 @@ header .sign input, header .sign a, header .sign .user {
 
 header .sign .user {
   border: none;
-}
-
-header .sign .user {
   padding: 8px;
+  flex-direction: column;
+  height: 75px;
 }
 
 header .sign .user .MuiAvatar-icon {
@@ -114,8 +117,9 @@ header .sign .user .MuiAvatar-icon {
   height: 10px
 }
 
-header .sign input:hover, header .sign a:hover {
+header .sign input:hover, header .sign .user a:hover {
   background-color: rgba(255, 255, 255, .3);
+  border: 1px solid #333;
 }
 
 header .sign input, header .sign a {
@@ -137,12 +141,12 @@ header .menu-icon img {
   opacity: var(--header-opacity);
 }
 
-@media (min-width: 320px) {
-	header .container {
-		width: 250px;
-	}
-
-	header .container nav, header .container .sign {
+@media (max-width: 767px) {
+  header .search {
+    display: none;
+  }
+  
+  header .container nav, header .container .sign {
 		display: none;
 	}
 
@@ -151,17 +155,20 @@ header .menu-icon img {
   }
 }
 
-@media (max-width: 767px) {
-  header .search {
-    display: none;
+@media (width: 768px) {
+  header .container nav, header .container .sign {
+		display: none;
+	}
+
+  header .logo {
+    flex: 1;
   }
-  
 }
 
 @media (min-width: 768px) {
-	header .container {
+	/* header .container {
 		width: 750px;
-	}
+	} */
 
 	header nav.flex-box, header .sign.flex-box {
 		display: flex;
@@ -200,9 +207,9 @@ header .menu-icon img {
 } */
 
 @media (min-width: 992px) {
-	header .container {
+	/* header .container {
 		width: 970px;
-	}
+	} */
 
   /* header .search {
     width: 240px
@@ -210,7 +217,7 @@ header .menu-icon img {
 }
 
 @media (min-width: 1200px) {
-	header .container {
+	/* header .container {
 		width: 1170px;
-	}
+	} */
 }
