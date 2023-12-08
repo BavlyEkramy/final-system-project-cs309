@@ -32,7 +32,7 @@ const Profilo = (props) => {
 
     function Edit() {
         SetEditProfile(!EditProfile);
-        if (!EditProfile)
+        if (EditProfile)
             document.querySelector('.Profilo-section').style.boxShadow = "7px 7px 45px rgba(0, 0, 0, 0.4)"
         else document.querySelector('.Profilo-section').style.boxShadow = "7px 7px 45px rgba(51, 102, 212, 0.4)"
     }
@@ -44,7 +44,7 @@ const Profilo = (props) => {
                 <div className="div">
                     <div id="image">
                         <img src="images/personal_image.jpg" alt={userData.firstName ? userData.firstName :""} />
-                        {EditProfile && <input type="file" id="avatar"  accept="image/png, image/jpeg" />}
+                        {!EditProfile && <input type="file" id="avatar"  accept="image/png, image/jpeg" />}
                             <Button variant="contained" disableElevation onClick={Edit}>{ EditProfile ? 'Edit Profile' : 'Submit Edit' } </Button>
                         
                     </div>
@@ -53,7 +53,7 @@ const Profilo = (props) => {
                         '& > :not(style)': { m: 1, width: '250px' },
                     }} >
 
-                        {EditProfile ?
+                        {!EditProfile ?
                             <>
                                 <TextField
                                     focused
