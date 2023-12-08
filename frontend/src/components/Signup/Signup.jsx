@@ -44,6 +44,7 @@ export default function SignUp() {
     const {isLogin, setLogin, userData, setUserData} = React.useContext(UserContext);
     const history= useNavigate();
     const [value , setSex] = useState('');
+    const [typeS ,setTypeS] =useState('');
 
     const dataInfo={ 
         firstName:null,
@@ -54,6 +55,7 @@ export default function SignUp() {
       phone:null,
       Age:null,
       Sex:value,
+      type:typeS,
       national:null
     }
     let signup = false;
@@ -98,6 +100,7 @@ export default function SignUp() {
       phone:data.get('Phone'),
       Age:data.get('Age'),
       national:data.get('National'),
+      type:data.get('typeS')
       
     }
     
@@ -245,6 +248,23 @@ export default function SignUp() {
                       <FormControlLabel value="female" control={<Radio />} label="Female" />
                       <FormControlLabel value="male" control={<Radio />} label="Male" />
                       <FormControlLabel value="other" control={<Radio />} label="Other" />
+                    </RadioGroup>
+                  </FormControl>
+              </Grid>
+
+              <Grid item xs={12} sm={12} container >
+                <FormControl>
+                  <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
+                    <RadioGroup
+                      row
+                      aria-labelledby="demo-radio-buttons-group-label"
+                      defaultValue="Customer"
+                      name="radio-buttons-group"
+                      onChange={(e)=>setTypeS(e.target.value)}
+                    >
+                      <FormControlLabel value="Customer" control={<Radio />} label="Customer" />
+                      <FormControlLabel value="Vendor" control={<Radio />} label="Vendor" />
+                     
                     </RadioGroup>
                   </FormControl>
               </Grid>
