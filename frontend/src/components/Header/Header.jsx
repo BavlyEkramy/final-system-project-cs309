@@ -1,6 +1,6 @@
 import './index.css';
 import List from '../List/List';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import Search from '../Search/Search';
@@ -10,11 +10,13 @@ import UserContext from '../../Services/UserContext';
 import { Avatar, Button } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import * as ROUTES from '../../constants/routes';
+import axios from 'axios';
 
 
 const Header = props => {
 	const { isLogin, setLogin, userData, setUserData } = useContext(UserContext);
 	const [showMenu, setShowMenu] = useState(false);
+
 	return (
 		<>
 			<header>
@@ -25,9 +27,10 @@ const Header = props => {
 					<nav className="flex-box">
 						<ul>
 							<li><Link to={ROUTES.HOME}>Home</Link></li>
-							<li>
-								<Link to="/cart">Cart </Link>
-								<Badge badgeContent={4} color="primary">
+							<li><Link to="/cart">Cart </Link>
+								{/* number of items in cart */}
+								<Badge color="primary">
+
 									<ShoppingCartIcon />
 								</Badge>
 
