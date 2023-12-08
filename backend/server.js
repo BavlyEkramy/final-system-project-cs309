@@ -374,7 +374,7 @@ server.post('/addcard' , cors() , async (req , res)=>{
 });
 
 
-server.post('/vendorProduct' , cors() , async (req , res)=>{
+server.get('/vendorProduct' , cors() , async (req , res)=>{
     try{
         const prod = await vendorProduct.find({});
         console.log(prod);
