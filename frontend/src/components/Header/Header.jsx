@@ -57,7 +57,11 @@ const Header = props => {
 							userData &&
               <>
 								<Avatar alt='personal-image' src='images/personal_image.jpg' />
+
+                <span>{userData.firstName}</span>
+
                 <span>{userData.email.substring(0, userData.email.indexOf('@'))}</span>
+
               </>
 						}
 					</Link>

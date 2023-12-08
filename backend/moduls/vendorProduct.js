@@ -10,7 +10,7 @@ const productsVendorSchema = new Schema(
         stock: { type: Number, required: true },
         images: { type: Array, required: true },
         stars: { type: Number, required: true },
-        Access:{ type: Number},
+        Company:{ type: String, required:true },
     },
     {
         timestamps: true

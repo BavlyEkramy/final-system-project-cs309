@@ -16,6 +16,10 @@ import {Routes, useNavigate} from 'react-router-dom';
 import UserContext from '../../Services/UserContext';
 import { Link } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
 
 function Copyright(props) {
   return (
@@ -35,7 +39,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-  const {isLogin, setLogin, userData, setUserData} = React.useContext(UserContext);
+    const {isLogin, setLogin, userData, setUserData} = React.useContext(UserContext);
     const history= useNavigate();
 
     const dataInfo={ 
@@ -49,37 +53,32 @@ export default function SignUp() {
       Sex:null,
       national:null
     }
-
- const handleSubmit= async(event)=>{
-
-        event.preventDefault();
+    let signup = false;
+    const p = document.createElement('p');
+    const Signup = document.getElementsByClassName('Signup')[0];
+    const handleSubmit= async(event)=>{
+      event.preventDefault();
+      if(signup){
         try {
             await axios.post("http://localhost:8000/signup" ,dataInfo )
             .then(res =>{
-                console.log(res.data);
-                setUserData(res.data);
-                setLogin(true);
-
-                if(res.data === "Email is Oready Exist"){
-                    setUserData(null);
-                    setLogin(false);
-                    const p = document.createElement('p');
-                    p.style.color='red';
-                    p.textContent = res.data;
-                    const Signup = document.querySelector('.MuiBox-root');
-                    Signup.appendChild(p);
+                if(res.data === "Email is already Exist"){
+                  p.textContent = res.data;
+                  Signup.appendChild(p); 
                 }else{
                     history('/home');
+                    setLogin(true);
+                    setUserData((res.data));
                 }
             }).catch(error => {
                 console.log(error);
             })
-
-            console.log(isLogin);
         } catch (error) {
           console.log(error);  
         }
-    
+
+      }
+      
  }
 
   const handleChange = (event) => {
@@ -88,9 +87,10 @@ export default function SignUp() {
     const d={
       
       firstName :data.get('firstName'),
-      lasttName :data.get('lastName'),
+      lastName :data.get('lastName'),
       email: data.get('email'),
       password: data.get('password'),
+      confirmPassword: data.get('Confirmpassword'),
       adress:data.get('Address'),
       phone:data.get('Phone'),
       Age:data.get('Age'),
@@ -98,16 +98,30 @@ export default function SignUp() {
       national:data.get('National'),
       
     }
-
-    dataInfo.firstName=d.firstName;
-    dataInfo.lastName=d.lastName;
-    dataInfo.email=d.email;
-    dataInfo.password=d.password;
-    dataInfo.adress=d.adress;
-    dataInfo.phone=d.phone;
-    dataInfo.Age=d.Age;
-    dataInfo.Sex=d.Sex;
-    dataInfo.national=d.national;
+    const checkEmail = /\w+@(gmail|yahoo|outlook).(com|net)/;
+    if(d.email.match(checkEmail)){
+      if((d.password).length >= 8){
+        if(d.password === d.confirmPassword){
+        dataInfo.firstName=d.firstName;
+        dataInfo.lastName=d.lastName;
+        dataInfo.email=d.email;
+        dataInfo.password=d.password;
+        dataInfo.adress=d.adress;
+        dataInfo.phone=d.phone;
+        dataInfo.Age=d.Age;
+        dataInfo.Sex=d.Sex;
+        dataInfo.national=d.national;
+        signup = true;
+        }else{
+          console.log("Password must be confirm");
+        }
+    }else{
+      console.log("Password is not strong must be 8 cracter or more");
+    }
+  }else{
+    console.log(d.Sex);
+    console.log("Email is not valid")
+  }
   };
 
   return (
@@ -176,7 +190,7 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
-                  name="password"
+                  name="Confirmpassword"
                   label="Confirm Password"
                   type="password"
                   id="Confirmpassword"
@@ -205,7 +219,7 @@ export default function SignUp() {
                   autoComplete="family-name"
                 />
               </Grid>
-              <Grid item xs={12} sm={6} >
+              <Grid item xs={12} sm={12} >
                 <TextField
                   required
                   fullWidth
@@ -216,16 +230,20 @@ export default function SignUp() {
                   autoComplete="family-name"
                 />
               </Grid>
-               <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="Sex"
-                  label="Sex"
-                  name="Sex"
-                  type='text'
-                  autoComplete="family-name"
-                />
+               <Grid item xs={12} sm={12} container >
+                <FormControl>
+                  <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
+                    <RadioGroup
+                      row
+                      aria-labelledby="demo-radio-buttons-group-label"
+                      defaultValue="male"
+                      name="radio-buttons-group"
+                    >
+                      <FormControlLabel value="female" control={<Radio />} label="Female" />
+                      <FormControlLabel value="male" control={<Radio />} label="Male" />
+                      <FormControlLabel value="other" control={<Radio />} label="Other" />
+                    </RadioGroup>
+                  </FormControl>
               </Grid>
 
               <Grid item xs={12} >
@@ -258,7 +276,7 @@ export default function SignUp() {
             >
               Sign Up
             </Button>
-            <Grid container justifyContent="flex-end">
+            <Grid container justifyContent="center">
               <Grid item>
                 <Link to={ROUTES.SIGN_IN}>
                   Already have an account? Sign in
