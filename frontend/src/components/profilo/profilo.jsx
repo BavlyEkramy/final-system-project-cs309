@@ -28,7 +28,7 @@ import UserContext from '../../Services/UserContext';
 const Profilo = (props) => {
     const { isLogin, setLogin, userData, setUserData } = useContext(UserContext);
 
-    const [EditProfile, SetEditProfile] = useState(false)
+    const [EditProfile, SetEditProfile] = useState(true)
 
     function Edit() {
         SetEditProfile(!EditProfile);
