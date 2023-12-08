@@ -1,0 +1,9 @@
+.search {
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-weight: bold;
+  font-size: 18px;
+  color: var(--main-color);
+  outline: none;
+}
