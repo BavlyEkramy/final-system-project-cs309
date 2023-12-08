@@ -2,7 +2,7 @@ import './index.css';
 import List from '../List/List';
 import { useContext, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Search from '../Search/Search';
 import Badge from '@mui/material/Badge';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -27,14 +27,14 @@ const Header = props => {
 							<li><Link to={ROUTES.HOME}>Home</Link></li>
 							<li><Link to="/cart">Cart </Link>
 								{/* number of items in cart */}
-								<Badge badgeContent={4} color="primary"> 
+								<Badge badgeContent={4} color="primary">
 									<ShoppingCartIcon />
 								</Badge>
 							</li>
 							<li><Link to={ROUTES.VENDOR}>Vendor</Link></li>
 						</ul>
 					</nav>
-					<Search placeholder="Search" sx={{  mr: 50 }} />
+					<Search placeholder="Search" sx={{ mr: 50 }} />
 					<div className='sign flex-box'>
 						{!isLogin ?
 							<Link to={ROUTES.SIGN_IN}>Sign in</Link>
@@ -46,11 +46,10 @@ const Header = props => {
 											userData &&
 											<>
 												<Avatar alt='personal-image' src='images/personal_image.jpg' sx={{ width: 24, height: 24, mr: 1 }} />
-												{(userData.firstName != "" && userData.firstName) ?
-													<span>{userData.firstName}</span>
-													:
+												{/* {(userData.firstName != "" && userData.firstName) ? */}
+												{/* <span>{userData.firstName}</span> */}
+												:
 												<span>{userData.email.substring(0, userData.email.indexOf('@'))}</span>
-												}
 											</>
 										}
 									</div>
