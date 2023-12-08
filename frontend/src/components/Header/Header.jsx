@@ -25,11 +25,14 @@ const Header = props => {
 					<nav className="flex-box">
 						<ul>
 							<li><Link to={ROUTES.HOME}>Home</Link></li>
-							<li><Link to="/cart">Cart </Link>
-								{/* number of items in cart */}
+							<li>
+								<Link to="/cart">Cart </Link>
 								<Badge badgeContent={4} color="primary">
 									<ShoppingCartIcon />
 								</Badge>
+
+								{/* number of items in cart */}
+
 							</li>
 							<li><Link to={ROUTES.VENDOR}>Vendor</Link></li>
 						</ul>

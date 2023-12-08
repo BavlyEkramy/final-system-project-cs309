@@ -27,7 +27,10 @@ import UserContext from '../../Services/UserContext';
 
 const Profilo = (props) => {
     const { isLogin, setLogin, userData, setUserData } = useContext(UserContext);
-    console.log(userData.id)
+    // console.log(userData.id)
+    function Edit() {
+        console.log("message")
+    }
     
     return (
         <>
@@ -36,7 +39,7 @@ const Profilo = (props) => {
                 <div className="div">
                     <div id="image">
                         <img src="images/personal_image.jpg" alt={userData.firstName} />
-                        <Button variant="contained" disableElevation >Edit Profile </Button>
+                        <Button variant="contained" disableElevation onClick={Edit}>Edit Profile </Button>
                     </div>
                     {/* <div> */}
                     <Box className='profile-info' sx={{
@@ -44,6 +47,7 @@ const Profilo = (props) => {
                     }} >
                         <TextField
                             focused
+                            adwc
                             id="outlined-read-only-input"
                             label="First name"
                             defaultValue={userData.firstName}
@@ -56,7 +60,7 @@ const Profilo = (props) => {
                             focused
                             id="outlined-read-only-input"
                             label="ID"
-                            defaultValue={userData.phone}
+                            defaultValue="--"
                             InputProps={{
                                 readOnly: true,
                             }}
