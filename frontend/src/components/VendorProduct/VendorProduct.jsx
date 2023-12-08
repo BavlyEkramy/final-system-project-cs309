@@ -18,14 +18,7 @@ import { useState, useEffect } from 'react';
 
 
 
-const VendorProduct = (props) => {
-
-    function EditProduct() {
-        console.log("EditProduct")
-    }
-    function RemoveProduct() {
-        console.log("RemoveProduct")
-    }
+const Product = (props) => {
 
     const { product  } = props;
     useEffect(() => {
@@ -60,7 +53,6 @@ const VendorProduct = (props) => {
                         </div>
                     <div className="vendor-btns">
                         <Button
-                            onClick={EditProduct}
                             color="primary"
                             // disabled={false}
                             // size="large"
@@ -70,7 +62,7 @@ const VendorProduct = (props) => {
                             Edit
                         </Button>
                         <Button
-                            onClick={RemoveProduct}
+                            // type="submit"
                             variant="contained"
                             color="error"
                             sx={{ m: 2, ml: 1 }}
@@ -83,4 +75,4 @@ const VendorProduct = (props) => {
     );
 };
 
-export default VendorProduct;
+export default Product;
