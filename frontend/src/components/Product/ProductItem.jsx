@@ -49,8 +49,8 @@ const ProductItem = (props) => {
                 </div>
                 {
                     <div className="d_col">
-                        <button value="price" name="Slim Fit Suit Black" className="btn" onClick={addToCart}>
-                            <i className="fas fa-shopping-bag" ></i> Add to cart </button>
+                        {!props.isCart && <button value="price" name="Slim Fit Suit Black" className="btn" onClick={addToCart}>
+                            <i className="fas fa-shopping-bag" ></i> Add to cart </button>}
                         <b className="price">8754 $</b>
                     </div>
                 }
