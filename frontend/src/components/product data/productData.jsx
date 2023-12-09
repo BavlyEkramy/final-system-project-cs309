@@ -1,29 +1,4 @@
-import Header from "./components/Header/Header";
-import { BrowserRouter as Router, Routes, Route,Switch, Link } from 'react-router-dom';
-import * as ROUTES from './constants/routes';
-import Product from "./components/Product/Product";
-import { useState} from "react";
-import Home from './components/Home/Home';
-import Cart from './components/Cart/Cart';
-import Vendor from './components/Vendor/Vendor';
-import Signin from "./components/Signin/Signin";
-import Signup from "./components/Signup/Signup";
-import Insertproducts from "./components/InsertProducts/Insertproducts";
-import UserContext from "./Services/UserContext";
-import LinkPage from './components/AboutUS/LinkPage';
-import AboutPage from './components/AboutUS/AboutPage .jsx';
-import {Slider}  from "./components/slider/Slider.jsx";
-import {slides} from "./components/data/carouselData.json";
-import Footer from "./components/footer/Footer.jsx";
-import ProductInfo from "./components/ProductInfo/ProductInfo.jsx";
-
-
-const App = () => {
-  const [isLogin, setLogin] = useState(false);
-  const {userData, setUserData} = useState({});
-  const userLogin = {isLogin, setLogin, userData, setUserData};
-  
-  const products = [{
+const productssData= [{
     productID :"1",
     type: "laptop",
     description: "Details\n\
@@ -108,49 +83,4 @@ const App = () => {
         "./prouducts_photo/Laptops/Lenovo Legion 5 Pro/5.png"],
       stars: "3.9",
     }]
-  
-  
-  
-  return (
-      <UserContext.Provider value={userLogin}>
-        <Router>
-        <Routes>
-          <Route path={ROUTES.LANDING} element={
-          <><Header />
-          <Slider data={slides}/>
-          <Home /> 
-          
-          <Product Allproduct={products}></Product>
-          <Footer/> 
-</>}>
-
-
-            <Route path={ROUTES.HOME} element={<><Header /><Home /></>} />
-          </Route>
-          
-          <Route path={ROUTES.CART} element={<> <Header /><Cart /></>} />
-          <Route path={ROUTES.VENDOR} element={<><Header /><Vendor /> <Product Allproduct={products} IsVendor="true"></Product> </>} />
-          <Route path={ROUTES.SIGN_IN} element={<><Signin /></>} />
-           <Route path= "/ProductInfo" element={<><ProductInfo /></>} />
-           {/* {products.map((products) =>(
-             <Link to ={`/ProductInfo/${products.productID}`} key= {products.productID}>
-             {products.productID}
-            </Link>
-           ))} */}
-          
-          <Route path={ROUTES.SIGN_UP} element={<><Signup /></>} />
-          <Route path={ROUTES.PRODUCTS} element={<><Header /><Product /></>} />
-          Insertproducts
-          <Route path={ROUTES.Insertproducts} element={<>< Insertproducts /></>} />
-
-         
-          
-        </Routes>
-      </Router>
-    </UserContext.Provider>
-  );
-
-
-}
-
-export default App;
+  export default productssData;

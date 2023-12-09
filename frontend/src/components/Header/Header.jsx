@@ -1,42 +1,34 @@
 import './index.css';
 import List from '../List/List';
-import { useContext, useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { Link } from "react-router-dom";
+import { useContext, useState } from 'react';
+
+import {Link} from "react-router-dom";
 import Search from '../Search/Search';
+
 import Badge from '@mui/material/Badge';
+// import MailIcon from '@mui/icons-material/Mail';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import UserContext from '../../Services/UserContext';
-import { Avatar, Button } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import * as ROUTES from '../../constants/routes';
-import axios from 'axios';
-
 
 const Header = props => {
-	const { isLogin, setLogin, userData, setUserData } = useContext(UserContext);
+	const {isLogin, setLogin, userData, setUserData} = useContext(UserContext);
 	const [showMenu, setShowMenu] = useState(false);
-
 	return (
 		<>
-			<header>
-				<div className="container flex-box">
-					<div className="logo">
-						<img src="images/logo.jpg" alt="logo" />
-					</div>
-					<nav className="flex-box">
-						<ul>
-							<li><Link to={ROUTES.HOME}>Home</Link></li>
+    <header>
+		<div className="container flex-box">
+			<div className="logo">
+				<img src="images/logo.jpg" alt="logo" />
+			</div>
+			<nav className="flex-box">
+				<ul>
+					<li><Link to="/home">Home</Link></li>
 							<li><Link to="/cart">Cart </Link>
-								{/* number of items in cart */}
-								<Badge color="primary">
-
+								<Badge badgeContent={4} color="primary">
 									<ShoppingCartIcon />
 								</Badge>
-
-								{/* number of items in cart */}
-
 							</li>
+
 							<li><Link to={ROUTES.VENDOR}>Vendor</Link></li>
 						</ul>
 					</nav>
@@ -47,11 +39,11 @@ const Header = props => {
 							:
 							<>
 								<Link to={ROUTES.PROFILE}>
-									<div className='user flex-box'>
+									<div className='user'>
 										{
 											userData &&
 											<>
-												<Avatar alt='personal-image' src='images/personal_image.jpg' sx={{ width: 24, height: 24, mr: 1 }} />
+												<Avatar alt='personal-image' src='images/personal_image.jpg' sx={{ width: 26, height: 26, mr: 1 }} />
 												{/* {(userData.firstName != "" && userData.firstName) ? */}
 												{/* <span>{userData.firstName}</span> */}
 												<span>{userData.email.substring(0, userData.email.indexOf('@'))}</span>
@@ -74,7 +66,6 @@ const Header = props => {
 			{showMenu && <List show={setShowMenu} />}
 		</>
 	);
-
 
 };
 

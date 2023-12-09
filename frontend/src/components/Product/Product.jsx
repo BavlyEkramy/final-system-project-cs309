@@ -2,14 +2,15 @@
 import React from "react";
 import './index.css';
 import { useEffect } from 'react';
-import ProductItem from "./ProductItem";
+import Item from "../Product/item";
 import VendorProduct from "../VendorProduct/VendorProduct";
 import AddItem from "../VendorProduct/AddItem";
+
+import { Button } from "@mui/material";
 
 
 const Product = (props) => {
   const { Allproduct, IsVendor } = props
-
   useEffect(() => {
     let heart_icon = document.querySelectorAll(".product-item .product-info i")
     heart_icon.forEach((z) => {
@@ -22,24 +23,24 @@ const Product = (props) => {
     })
   })
 
-  console.log(Allproduct)
+  // console.log(Allproduct)
   return (
     <>
       <div id="product-container">
         {
-          IsVendor &&
-          <AddItem />
-        }
-        
+          IsVendor &&  
+          <AddItem/>
+        }        
         {Allproduct != 'Empity' && Allproduct != null &&(
           !IsVendor ?
             Allproduct.map((p, i) => (
-              <ProductItem isCart={props.isCart} product={p} key={i} />
+              <ProductItem product={p} key={i} />
             ))
             :
+
             Allproduct.map((p, i) => (
               <VendorProduct product={p} key={i} />
-            )))
+            ))
         }
       </div>
     </>

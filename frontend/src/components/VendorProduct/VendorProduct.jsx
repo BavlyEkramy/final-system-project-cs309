@@ -20,6 +20,7 @@ import ProductContext from "../../Services/ProductContext";
 
 
 
+
 const VendorProduct = (props) => {
 
     const { product  } = props;
@@ -75,7 +76,9 @@ const VendorProduct = (props) => {
                         </div>
                     <div className="vendor-btns">
                         <Button
+
                             onClick={editProduct}
+
                             color="primary"
                             // disabled={false}
                             // size="large"
@@ -85,7 +88,11 @@ const VendorProduct = (props) => {
                             Edit
                         </Button>
                         <Button
+
                             onClick={() => {removeProduct(product['_id'])}}
+
+                            // type="submit"
+
                             variant="contained"
                             color="error"
                             sx={{ m: 2, ml: 1 }}

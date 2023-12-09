@@ -57,11 +57,6 @@ transform: scale(1.09);
     font-size: 20px;
 }
 
-.product-item .d_col i {
-    font-size: 18px;
-    margin: 2px;
-}
-
 .product-item .d_col {
     display: flex;
     flex-direction: row;
@@ -109,6 +104,11 @@ transform: scale(1.09);
 
 .product-item .btn:hover {
     opacity: 0.8;
+}
+.About{
+    list-style: none;
+    text-decoration: none;
+    color : rgb(34, 175, 214);
 }
 
 @media(max-width:800px) {
