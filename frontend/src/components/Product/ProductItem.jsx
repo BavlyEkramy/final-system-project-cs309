@@ -35,23 +35,22 @@ const ProductItem = (props) => {
             })
     }
 
-    const removeFromCard = () => {
-        let userID = userData['_id'];
-        let productID = product['_id'];
-        axios.delete('http://localhost:8000/deletecard', {
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            data: {Userid: userData['_id'], productId: product['_id']}
-        })
-            .then(res => {
-                console.log(res.data);
-                console.log(userData['_id']);
-                console.log(product['_id']);
+    const removeFromCard = async (u, p) => {
+        try {
+            const req = await axios.delete('http://localhost:8000/deletecard', {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                data: {Userid: u, productId: p}
             })
-            .catch(error => {
-                console.log(error);
-            })
+        const data = req.data;
+        console.log(data);
+        console.log(req.body);
+        console.log(u, p);
+        } catch (error) {
+            console.log(error);
+            console.log(u, p);
+        }
     }
 
     return (
@@ -74,7 +73,7 @@ const ProductItem = (props) => {
                             <i className="fas fa-shopping-bag" ></i> Add to cart </button>
                             :
                             <Button
-                            onClick={removeFromCard}
+                            onClick={() => {removeFromCard(userData['_id'], product['_id'])}}
                             variant="contained"
                             color="error"
                             sx={{ m: 2, ml: 1 }}

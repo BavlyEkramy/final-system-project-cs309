@@ -15,8 +15,7 @@ const Home = () => {
       <div className="home">
         {products && <Product Allproduct={products} IsVendor={false} isCart={false} />}
       </div>
-    </>
-  );
-}
+      </>
+)}
 
 export default Home;

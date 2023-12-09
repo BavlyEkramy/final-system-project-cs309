@@ -30,6 +30,7 @@ const App = () => {
         setProducts(res.data);
       })
       .catch(error => { console.log(error) });
+
   }
 
   useEffect(() => {
@@ -48,25 +49,23 @@ const App = () => {
             <Route path={ROUTES.CART} element={<> <Header /><Cart /></>} />
             <Route path={ROUTES.VENDOR} element={
               <><Header />
-                {/* {
-                setTimeout(() => {
-                window.open("http://localhost:3000/signin", "_self", "width=500, height=600");
-              }, 3000)} */}
                 {isLogin ? <Vendor /> : <ErrorPage msg="You must log in!" />}
-              </>
-            }
-            />
+                {isLogin ? <Vendor /> : <ErrorPage msg="You must log in!" />} </>} />
+
             <Route path={ROUTES.SIGN_IN} element={<><Signin /></>} />
             <Route path={ROUTES.SIGN_UP} element={<><Signup /></>} />
             <Route path={ROUTES.PRODUCTS} element={<><Header /><Product /></>} />
             <Route path={ROUTES.PROFILE} element={<><Header /> <Profilo /></>} />
             Insertproducts
             <Route path={ROUTES.Insertproducts} element={<>< Insertproducts /></>} />
+
+            <Route path='*' element={<><Header /><ErrorPage msg="This page is not found!" /></>} />
             <Route path='*' element={<><Header /><ErrorPage msg="This page is not found!" /></>} />
           </Routes>
         </Router>
-      </ProductContext.Provider>
-    </UserContext.Provider>
+      </ProductContext.Provider >
+    </UserContext.Provider >
+
   );
 
 

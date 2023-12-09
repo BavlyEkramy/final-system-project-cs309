@@ -336,22 +336,13 @@ server.post('/cards' , cors() , async (req , res)=>{
 // 2 => delete product from card 
 
 server.delete('/deletecard' , cors() , async (req , res)=>{
-    const UserId = req.body.Userid;
-    const productId = req.body.productId; 
+    const card = req.body;
     try {
-        const user = await Users.findById(UserId);
-        if(user == null){
-            res.json("user is not found");
+        const deletecard = await Cards.deleteOne(card);
+        if(deletecard == null){
+            res.json("card is not found");
         }else{
-            const card = user.card;
-            if(card.length === 0){
-                res.json("Empity");
-            }else{
-                const product = card.filter((e)=> e != productId);
-                user.card = product;
-                await user.save();
-                res.status(200).json(product);
-            }
+            res.status(200).json(deletecard);
         }
     } catch (error) {
         res.status(400).json(error);
@@ -505,7 +496,16 @@ server.post('/signup' , cors() , async(req , res)=>{
         }
 });
 
-
+server.put('/edituser' , cors() , async(req , res) =>{
+    const user = req.body ;
+    try {
+        const edituser = await Users.findByIdAndUpdate(user.id ,user);
+        edituser.save();
+    } catch (error) {
+        res.status(400).json(error);
+        console.log(error);
+    }
+});
 
 
 //--------------------------------------------------------------------------
