@@ -47,12 +47,8 @@ export default function SignIn() {
     
         try {
             await axios.post("http://localhost:8000/login" , dataInfo)
-            .then( res =>{
-                console.log(res.data);
-             
+            .then( res =>
                 if(res.data === "Email Dose Not Exist" || res.data === "Email or Password is not correct"){
-                  
-                 
                     const p = document.createElement('p');
                     p.textContent = res.data;
                     const Signin = document.getElementsByClassName('Signin')[0];
