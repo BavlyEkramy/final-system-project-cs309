@@ -12,22 +12,38 @@ import {
     TextField,
     Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
 import './index.css';
 import { useState, useEffect } from 'react';
+import axios from "axios";
+import ProductContext from "../../Services/ProductContext";
+
 
 
 
 const VendorProduct = (props) => {
 
-    function EditProduct() {
+    const { product  } = props;
+    
+    const editProduct = () => {
         console.log("EditProduct")
     }
-    function RemoveProduct() {
-        console.log("RemoveProduct")
+    const removeProduct = async (i) => {
+        try {
+            const req = await axios.delete('http://localhost:8000/deleteProduct', {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                data: {id: product['_id']}
+            })
+        const data = req.data;
+        console.log(data);
+        console.log(req.body);
+        } catch (error) {
+            console.log(error);
+        }
     }
 
-    const { product  } = props;
     useEffect(() => {
         let heart_icon = document.querySelectorAll(".help")
         heart_icon.forEach((z) => {
@@ -60,7 +76,9 @@ const VendorProduct = (props) => {
                         </div>
                     <div className="vendor-btns">
                         <Button
-                            onClick={EditProduct}
+
+                            onClick={editProduct}
+
                             color="primary"
                             // disabled={false}
                             // size="large"
@@ -70,7 +88,11 @@ const VendorProduct = (props) => {
                             Edit
                         </Button>
                         <Button
-                            onClick={RemoveProduct}
+
+                            onClick={() => {removeProduct(product['_id'])}}
+
+                            // type="submit"
+
                             variant="contained"
                             color="error"
                             sx={{ m: 2, ml: 1 }}

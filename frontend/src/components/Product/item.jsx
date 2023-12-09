@@ -1,19 +1,18 @@
 'use client'
-import React, { useContext } from "react";
+import React from "react";
 import './index.css';
 import { useState, useEffect } from 'react';
-import UserContext from "../../Services/UserContext";
-import axios from "axios";
+import { Link } from "react-router-dom";
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 
-
-const Item = (props) => {
+const Product = (props) => {
+    
     const { product } = props;
-    const {userData, setUserData} = useContext(UserContext);
     useEffect(() => {
         let heart_icon = document.querySelectorAll(".product-item .product-info i")
         heart_icon.forEach((z) => {
-
             z.onclick = function () {
                 console.log("message")
                 if (z.className === "fas fa-heart") {
@@ -22,21 +21,12 @@ const Item = (props) => {
             }
         })
     })
-    // add to schema 
-    const AddToCart = () => {
-        let userID = userData['_id'];
-        let productID = product['_id'];
-        axios.post('http://localhost:8000/addCard', {"userId": userData['_id'], "productId": product['_id']})
-        .then(res => {
-            console.log(res.data);
-        })
-        .catch(error => {
-            console.log(error);
-        })
-    }
+    console.log(product)
+
     return (
         <>
             <div className="product-item">
+           
                 <div className="figure">
                     <img src={product.images[0]} alt="product.model" />
                     <div className="product-info">
@@ -47,15 +37,20 @@ const Item = (props) => {
                         <p>{product.description}</p>
                     </div>
                 </div>
-                {
-                    <div className="d_col">
-                        <button value="price" name="Slim Fit Suit Black" className="btn" onClick={AddToCart}>
-                            <i className="fas fa-shopping-bag" ></i> Add to cart </button>
-                        <b className="price">8754 $</b>
-                    </div>}
+                <div className="d_col">
+                    <button value="price" name="Slim Fit Suit Black" className="btn">
+                        <i className="fas fa-shopping-bag"></i> Add to Bag </button>
+                    <b className="price">8754 $</b>
+                    <Button  onClick={() => {
+                       console.log(product.description)
+                    }} Button variant="outlined"> <Link to='/ProductInfo' className="About">About</Link></Button>
+                    {/* <Button  variant="outlined">About</Button> */}
+
+                </div>
+                
             </div>
         </>
     );
 };
 
-export default Item;
+export default Product;

@@ -15,21 +15,13 @@ import {
 import React from "react";
 import './index.css';
 import { useState, useEffect } from 'react';
-// import Box from '@mui/material/Box';
-
 
 
 
 const AddItem = (props) => {
-    const [pp, setpp] = useState(5);
-    useEffect(() => {
-        AddProduct()
 
-    }, []);
-    function AddProduct() {
-        console.log("AddProduct")
-    }
 
+    // console.log(product)
 
     return (
         <>
@@ -38,7 +30,7 @@ const AddItem = (props) => {
                     <div className="vendor-Add">
                         <h1>Add new Item in Your company</h1>
                         <Button
-                            onClick={AddProduct}
+                            // type="submit"
                             variant="contained"
                             color="primary"
                             sx={{ m: 2, ml: 1 }}
