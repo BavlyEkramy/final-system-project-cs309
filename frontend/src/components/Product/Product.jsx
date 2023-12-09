@@ -32,7 +32,7 @@ const Product = (props) => {
           <AddItem/>
         }        
         {Allproduct != 'Empity' && Allproduct != null &&(
-          !IsVendor ?
+          !IsVendor) ?
             Allproduct.map((p, i) => (
               <ProductItem product={p} key={i} />
             ))
@@ -42,6 +42,8 @@ const Product = (props) => {
               <VendorProduct product={p} key={i} />
             ))
         }
+        
+            
       </div>
     </>
   );

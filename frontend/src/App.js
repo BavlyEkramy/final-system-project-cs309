@@ -13,7 +13,6 @@ import UserContext from "./Services/UserContext";
 import LinkPage from './components/AboutUS/LinkPage';
 import AboutPage from './components/AboutUS/AboutPage .jsx';
 import {Slider}  from "./components/slider/Slider.jsx";
-import {slides} from "./components/data/carouselData.json";
 import Footer from "./components/footer/Footer.jsx";
 import ProductInfo from "./components/ProductInfo/ProductInfo.jsx";
 
@@ -117,7 +116,7 @@ const App = () => {
         <Routes>
           <Route path={ROUTES.LANDING} element={
           <><Header />
-          <Slider data={slides}/>
+          <Slider/>
           <Home /> 
           
           <Product Allproduct={products}></Product>

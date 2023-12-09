@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import Footer from '../footer/Footer';
 import Header from '../Header/Header';
 import {Slider} from "../slider/Slider";
-import {slides} from "../data/carouselData.json";
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
@@ -154,7 +153,7 @@ export default function ProductInfo() {
     ProductInfo - {product.title} {product.id}
 </h1> */}
   <Header/>
-   <Slider className = "Slider_pro" data={slides}/>
+   <Slider className = "Slider_pro"/>
    <main className='main'>
         <section className="specs">
             <h2>Tech Specs</h2>
