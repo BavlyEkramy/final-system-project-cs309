@@ -26,7 +26,6 @@ const App = () => {
     axios
     .get('http://localhost:8000/vendorProduct') // This will be edit when the all products api is added
     .then(res => {
-      console.log(res.data);
       setProducts(res.data);
     })
     .catch(error => {console.log(error)});

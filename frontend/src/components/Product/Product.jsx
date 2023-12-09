@@ -46,3 +46,17 @@ const Product = (props) => {
 };
 
 export default Product;
+
+
+function convertToBase64(file){
+return new Promise((resovle,reject)=>{
+const filerReader=new FileReader();
+filerReader.readAsDataURL(file);
+filerReader.onload=()=>{
+resovle(filerReader.result);
+}
+filerReader.onerror=(error)=>{
+reject(error)
+}})
+
+}

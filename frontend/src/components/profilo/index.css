@@ -17,13 +17,13 @@
 }
 
 #image {
-    filter: brightness(0.9);
-    width: 210px;
-    height: 250px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     text-align: center;
-    margin-bottom: 90px;   
-     margin-left: 30px;
+    margin-right: 10%;
 }
+
 #avatar {
     margin-bottom :10px ;
 }
@@ -40,12 +40,18 @@
     gap: 30px;
     font-size: 50px;
 }
+.custom-file-upload
+{
+margin-left: 10%;
+margin-bottom: 20%;
 
+}
 .div {
-    margin: auto;
     display: flex;
-    justify-content: space-between;
-    flex-direction: row-reverse;
+    margin: auto;
+   
+    justify-content: center;
+    flex-direction: row;
     flex-wrap: wrap;
 }
 

@@ -506,6 +506,43 @@ server.post('/signup' , cors() , async(req , res)=>{
 });
 
 
+server.get('/profile',cors(), async(req,res)=>{
+     
+    try {
+         Users.find({}).then(data=>{
+
+            res.status(408).json(data)
+
+         }).catch(error=>
+            res.status(408).json({error})
+            
+            )}
+
+       catch (error) {
+        {res.json({error})
+    }
+       }});
+
+server.post('/profile' , cors() , async(req , res)=>{
+
+     const user =req.body;
+      console.log(user);
+    const image =user.myFile;
+
+    
+    
+ 
+    if(user.myFile!==null||user.myFile!=="")
+      user.myFile=image;
+       try {
+        res.status(201).json({msg:"New Image is uploaded ...!"})
+       } catch (error) {
+        res.status(409).json({message:error.message})
+       }
+
+})
+
+
 
 
 //--------------------------------------------------------------------------

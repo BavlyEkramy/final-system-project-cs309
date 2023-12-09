@@ -8,13 +8,7 @@ const Home = () => {
   // return <div>Home</div>
   const {products, setProducts} = useContext(ProductContext);
 
-  return (
-    <>
-    <div className="home">
-      {products && <Product Allproduct={products} IsVendor={false} />}
-    </div>
-    </>
-  );
+
 }
 
 export default Home;

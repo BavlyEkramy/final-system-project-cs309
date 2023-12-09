@@ -14,6 +14,7 @@ const userSchema = new Schema({
     Age:{ type: Date},
     sex:{ type: String},
     national:{ type: String},
+    myFile :{type : String},
 
 });
 
