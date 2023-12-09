@@ -11,6 +11,4 @@ export const CART = '/cart';
 export const USERS = '/users';
 export const VENDOR = '/vendor';
 export const Insertproducts = '/vendor/Insertproducts';
-export const AboutPage = '/AboutPage';
-export const Footer = '/footer';
-export const ProductInfo = '/ProductInfo';
+export const PROFILE = '/profile';
