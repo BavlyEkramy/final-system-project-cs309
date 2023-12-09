@@ -1,25 +1,22 @@
 import './index.css';
-// import Product from "../Product/Product";
+import Product from "../Product/Product";
+import { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
+import ProductContext from '../../Services/ProductContext';
 
 
 const Vendor = () => {
-  const products = [
-    { name: "laptop1", id: "15" },
-    { name: "laptop2" },
-    { name: "laptop3" },
-    { name: "laptop1", id: "15" },
 
 
-  ];
+  const {products, setProducts} = useContext(ProductContext);
+
   return (
     <>
       <div className='vendor'>
 
-        <Product Allproduct={products} IsVendor={true} />
+        <Product Allproduct={products} IsVendor={true} isCart={false}/>
       </div>
     </>
-
-
   );
 }
 
