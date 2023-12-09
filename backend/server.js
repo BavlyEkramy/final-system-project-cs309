@@ -496,7 +496,16 @@ server.post('/signup' , cors() , async(req , res)=>{
         }
 });
 
-
+server.put('/edituser' , cors() , async(req , res) =>{
+    const user = req.body ;
+    try {
+        const edituser = await Users.findByIdAndUpdate(user.id ,user);
+        edituser.save();
+    } catch (error) {
+        res.status(400).json(error);
+        console.log(error);
+    }
+});
 
 
 //--------------------------------------------------------------------------
