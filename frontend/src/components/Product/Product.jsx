@@ -30,7 +30,8 @@ const Product = (props) => {
           IsVendor &&
           <AddItem />
         }
-        {Allproduct&&(
+        
+        {Allproduct != 'Empity' && Allproduct != null &&(
           !IsVendor ?
             Allproduct.map((p, i) => (
               <ProductItem isCart={props.isCart} product={p} key={i} />
