@@ -30,9 +30,8 @@ const Product = (props) => {
         {
           IsVendor &&  
           <AddItem/>
-        }
-
-        {
+        }        
+        {Allproduct != 'Empity' && Allproduct != null &&(
           !IsVendor ?
             Allproduct.map((p, i) => (
               <ProductItem product={p} key={i} />
