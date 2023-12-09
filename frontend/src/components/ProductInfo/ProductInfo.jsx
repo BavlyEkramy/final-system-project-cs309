@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Footer from '../footer/Footer';
 import Header from '../Header/Header';
 import {Slider} from "../slider/Slider";
-import {slides} from "../data/carouselData.json";
+// import {slides} from "../data/carouselData.json";
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
@@ -25,6 +25,23 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
     
 export default function ProductInfo() {
 
+    let slides= [
+        {
+            "src": "https://picsum.photos/seed/picsum1/600/400",
+            "alt": "Image 1 for carousel"
+        },
+        {
+            "src": "https://picsum.photos/seed/picsum2/600/400",
+            "alt": "Image 2 for carousel"
+        }, {
+            "src": "https://picsum.photos/seed/picsum3/600/400",
+            "alt": "Image 3 for carousel"
+        }
+        , {
+            "src": "https://picsum.photos/seed/picsum4/600/400",
+            "alt": "Image 4 for carousel"
+        }
+    ]
     
 //    const api_url =  [{
 //     productID :"1",

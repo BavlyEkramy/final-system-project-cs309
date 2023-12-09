@@ -14,3 +14,6 @@ export const Insertproducts = '/vendor/Insertproducts';
 export const AboutPage = '/AboutPage';
 export const Footer = '/footer';
 export const ProductInfo = '/ProductInfo';
+export const PROFILE = '/profile';
+
+
