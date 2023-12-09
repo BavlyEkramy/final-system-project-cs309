@@ -22,6 +22,8 @@ import React from "react";
 import './index.css';
 import { useState, useEffect, useContext } from 'react';
 import UserContext from '../../Services/UserContext';
+import axios from "axios";
+import ErrorPage from "../ErrorPage/ErrorPage";
 
 
 
@@ -36,6 +38,9 @@ const Profilo = (props) => {
             document.querySelector('.Profilo-section').style.boxShadow = "7px 7px 45px rgba(0, 0, 0, 0.4)"
         else document.querySelector('.Profilo-section').style.boxShadow = "7px 7px 45px rgba(51, 102, 212, 0.4)"
     }
+
+    if (!isLogin)
+        return <ErrorPage msg="You must login to see the profile!" />
 
     return (
         <>

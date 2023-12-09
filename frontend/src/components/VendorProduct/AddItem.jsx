@@ -23,10 +23,10 @@ import { useState, useEffect } from 'react';
 const AddItem = (props) => {
     const [pp, setpp] = useState(5);
     useEffect(() => {
-        AddProduct()
+        addProduct()
 
     }, []);
-    function AddProduct() {
+    const addProduct = () => {
         console.log("AddProduct")
     }
 
@@ -38,7 +38,7 @@ const AddItem = (props) => {
                     <div className="vendor-Add">
                         <h1>Add new Item in Your company</h1>
                         <Button
-                            onClick={AddProduct}
+                            onClick={addProduct}
                             variant="contained"
                             color="primary"
                             sx={{ m: 2, ml: 1 }}

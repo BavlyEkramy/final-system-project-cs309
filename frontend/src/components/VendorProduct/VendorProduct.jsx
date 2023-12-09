@@ -33,7 +33,7 @@ const VendorProduct = (props) => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                data: {id: product['_id']}
+                data: {id: i}
             })
         const data = req.data;
         console.log(data);
