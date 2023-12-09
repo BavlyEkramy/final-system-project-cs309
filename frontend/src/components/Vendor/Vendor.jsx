@@ -1,5 +1,5 @@
 import './index.css';
-// import Product from "../Product/Product";
+import Product from "../Product/Product";
 
 
 const Vendor = () => {

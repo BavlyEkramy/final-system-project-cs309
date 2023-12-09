@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import Item from "../Product/item";
 import VendorProduct from "../VendorProduct/VendorProduct";
 import AddItem from "../VendorProduct/AddItem";
-
+import ProductItem from "./ProductItem";
 import { Button } from "@mui/material";
 
 
@@ -40,7 +40,7 @@ const Product = (props) => {
 
             Allproduct.map((p, i) => (
               <VendorProduct product={p} key={i} />
-            ))
+            )))
         }
         
             

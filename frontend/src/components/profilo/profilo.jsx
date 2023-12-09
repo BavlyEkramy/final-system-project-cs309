@@ -43,10 +43,10 @@ const Profilo = (props) => {
                 <h2>Profile</h2>
                 <div className="div">
                     <div id="image">
-                        <img src="images/personal_image.jpg" alt={userData.firstName ? userData.firstName :""} />
-                        {!EditProfile && <input type="file" id="avatar"  accept="image/png, image/jpeg" />}
-                            <Button variant="contained" disableElevation onClick={Edit}>{ EditProfile ? 'Edit Profile' : 'Submit Edit' } </Button>
-                        
+                        <img src="images/personal_image.jpg" alt={userData.firstName ? userData.firstName : ""} />
+                        {!EditProfile && <input type="file" id="avatar" accept="image/png, image/jpeg" />}
+                        <Button variant="contained" disableElevation onClick={Edit}>{EditProfile ? 'Edit Profile' : 'Submit Edit'} </Button>
+
                     </div>
                     {/* <div> */}
                     <Box className='profile-info' sx={{
@@ -155,21 +155,11 @@ const Profilo = (props) => {
                                     InputProps={{
                                         readOnly: true,
                                     }} />
-
                             </>
                         }
-
-
                     </Box>
                 </div>
             </div>
-
-
-
-
-
-
-
         </>
     );
 };

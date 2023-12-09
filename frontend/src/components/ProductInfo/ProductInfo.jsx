@@ -24,6 +24,23 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
     
 export default function ProductInfo() {
 
+    let slides= [
+        {
+            "src": "https://picsum.photos/seed/picsum1/600/400",
+            "alt": "Image 1 for carousel"
+        },
+        {
+            "src": "https://picsum.photos/seed/picsum2/600/400",
+            "alt": "Image 2 for carousel"
+        }, {
+            "src": "https://picsum.photos/seed/picsum3/600/400",
+            "alt": "Image 3 for carousel"
+        }
+        , {
+            "src": "https://picsum.photos/seed/picsum4/600/400",
+            "alt": "Image 4 for carousel"
+        }
+    ]
     
 //    const api_url =  [{
 //     productID :"1",

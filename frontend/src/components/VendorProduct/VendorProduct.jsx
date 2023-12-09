@@ -23,8 +23,8 @@ import ProductContext from "../../Services/ProductContext";
 
 const VendorProduct = (props) => {
 
-    const { product  } = props;
-    
+    const { product } = props;
+
     const editProduct = () => {
         console.log("EditProduct")
     }
@@ -34,11 +34,11 @@ const VendorProduct = (props) => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                data: {id: product['_id']}
+                data: { id: product['_id'] }
             })
-        const data = req.data;
-        console.log(data);
-        console.log(req.body);
+            const data = req.data;
+            console.log(data);
+            console.log(req.body);
         } catch (error) {
             console.log(error);
         }
@@ -59,21 +59,21 @@ const VendorProduct = (props) => {
 
     return (
         <>
-            
+
             <div className="vendor-item ">
-                <div className="figure">
-                    <img src={product.images[0]} alt="" />
-                </div>
+                { <div className="figure">
+                    {/* <img src={product.images[0]} alt="" /> */}
+                </div>}
                 <div className="vendor-info">
                     <h2>{product.model} </h2>
                     <p>{product.description}</p>
 
-                        <div className="info-div">
-                            <b><h2>Price : </h2>{product.price} </b>
-                            <b><h2>Stock : </h2>{product.stock  } </b>
-                            <b><h2>Sold : </h2>--</b>
-                            <b><h2>Likes : </h2>--</b>
-                        </div>
+                    <div className="info-div">
+                        <b><h2>Price : </h2>{product.price} </b>
+                        <b><h2>Stock : </h2>{product.stock} </b>
+                        <b><h2>Sold : </h2>--</b>
+                        <b><h2>Likes : </h2>--</b>
+                    </div>
                     <div className="vendor-btns">
                         <Button
 
@@ -89,7 +89,7 @@ const VendorProduct = (props) => {
                         </Button>
                         <Button
 
-                            onClick={() => {removeProduct(product['_id'])}}
+                            onClick={() => { removeProduct(product['_id']) }}
 
                             // type="submit"
 
@@ -100,7 +100,7 @@ const VendorProduct = (props) => {
                     </div>
                 </div>
             </div>
-            
+
         </>
     );
 };
